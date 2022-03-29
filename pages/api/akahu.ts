@@ -1,14 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   AkahuClient,
-  Paginated,
-  Transaction,
+  EnrichedTransaction,
   TransactionQueryParams,
 } from 'akahu';
 
+export interface Transaction {
+  date: string;
+  amount: number;
+  type: string;
+  description: string;
+  merchantName: string;
+  categories: string[];
+}
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Paginated<Transaction>>
+  res: NextApiResponse<Transaction[]>
 ) {
   const appToken = process.env.AKAHU_APP_TOKEN as string;
   const userToken = process.env.AKAHU_USER_TOKEN as string;
@@ -33,5 +41,24 @@ export default async function handler(
     queryParameters
   );
 
-  res.status(200).json(transactions);
+  //TODO handle pagination
+  const akahuTransactions = transactions.items as EnrichedTransaction[];
+  const mappedTransactions = getMappedTransactions(akahuTransactions);
+
+  res.status(200).json(mappedTransactions);
 }
+
+const getMappedTransactions = (
+  transactions: EnrichedTransaction[]
+): Transaction[] =>
+  transactions.map((transaction) => {
+    return {
+      date: transaction.date,
+      amount: transaction.amount,
+      type: transaction.type,
+      description: transaction.description,
+      merchantName: transaction.merchant?.name,
+      categories: transaction.category?.components.map((c) => c.name),
+      logo: transaction.meta.logo,
+    };
+  });
