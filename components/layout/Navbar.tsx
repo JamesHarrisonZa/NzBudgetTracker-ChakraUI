@@ -30,7 +30,7 @@ const Navbar: FC = () => {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Heading as="h2" size="lg">
             <Link href={'/'}>
-              <a>Kiwi Budget Tracker</a>
+              <a>Budget Tracker</a>
             </Link>
           </Heading>
 
