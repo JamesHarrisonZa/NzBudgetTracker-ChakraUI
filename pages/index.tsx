@@ -9,7 +9,7 @@ import {
   getFastFoodTransactions,
   getGroceryTransactions,
   getUtilityTransactions,
-} from '../lib/filter-transactions';
+} from '../lib/util/filter-transactions';
 
 const Home: FC = () => {
   const todayDate = new Date();

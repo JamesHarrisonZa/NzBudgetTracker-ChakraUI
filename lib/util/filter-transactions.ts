@@ -1,4 +1,4 @@
-import { Transaction } from '../pages/api/akahu';
+import { Transaction } from '../../pages/api/akahu';
 import { TransactionCategories } from './transaction-categories';
 
 export const getGroceryTransactions = (transactions: Transaction[]) =>
