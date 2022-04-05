@@ -1,5 +1,5 @@
 import { SimpleGrid, VStack, Text, Box } from '@chakra-ui/react';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import Head from 'next/head';
 import FormattedDate from '../components/FormattedDate';
 import Layout, { siteTitle } from '../components/layout/Layout';
@@ -7,8 +7,9 @@ import {
   getFastFoodTransactions,
   getGroceryTransactions,
   getUtilityTransactions,
-} from '../lib/util/filter-transactions';
+} from '../lib/util/get-filtered-transactions';
 import { useAccountTransactions } from '../lib/data-access/useAccountTransactions';
+import { getTransactionsTotal } from '../lib/util/get-transactions-total';
 
 const Home: FC = () => {
   const todayDate = new Date();
@@ -16,25 +17,13 @@ const Home: FC = () => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 
   const groceryTransactions = getGroceryTransactions(transactions);
-  const groceriesTotal = groceryTransactions.reduce(
-    //TODO MOVE to utilities
-    (prev, curr) => prev + curr.amount,
-    0
-  );
+  const groceriesTotal = getTransactionsTotal(groceryTransactions);
 
   const fastFoodTransactions = getFastFoodTransactions(transactions);
-  const fastFoodTotal = fastFoodTransactions.reduce(
-    //TODO MOVE to utilities
-    (prev, curr) => prev + curr.amount,
-    0
-  );
+  const fastFoodTotal = getTransactionsTotal(fastFoodTransactions);
 
   const utilityTransactions = getUtilityTransactions(transactions);
-  const utilitiesTotal = utilityTransactions.reduce(
-    //TODO MOVE to utilities
-    (prev, curr) => prev + curr.amount,
-    0
-  );
+  const utilitiesTotal = getTransactionsTotal(utilityTransactions);
 
   return (
     <Layout>
