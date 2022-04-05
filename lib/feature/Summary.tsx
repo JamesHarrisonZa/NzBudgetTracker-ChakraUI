@@ -1,5 +1,13 @@
 import { FC } from 'react';
-import { SimpleGrid, VStack, Text, Box } from '@chakra-ui/react';
+import {
+  SimpleGrid,
+  VStack,
+  Text,
+  Box,
+  StatLabel,
+  Stat,
+  StatNumber,
+} from '@chakra-ui/react';
 import FormattedDate from '../ui/FormattedDate';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
 import {
@@ -30,9 +38,20 @@ export const Summary: FC = () => {
       </Text>
       <Text as="b">Amounts spent this month</Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
-        <Box>on groceries: ${groceriesTotal}</Box>
-        <Box>on fast food: ${fastFoodTotal}</Box>
-        <Box>on utilities: ${utilitiesTotal}</Box>
+        <Stat>
+          <StatLabel>on groceries</StatLabel>
+          <StatNumber>${groceriesTotal}</StatNumber>
+        </Stat>
+
+        <Stat>
+          <StatLabel>on fast food</StatLabel>
+          <StatNumber>${fastFoodTotal}</StatNumber>
+        </Stat>
+
+        <Stat>
+          <StatLabel>on utilities</StatLabel>
+          <StatNumber>${utilitiesTotal}</StatNumber>
+        </Stat>
       </SimpleGrid>
     </VStack>
   );
