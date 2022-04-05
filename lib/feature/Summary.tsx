@@ -10,25 +10,31 @@ import {
 } from '@chakra-ui/react';
 import FormattedDate from '../ui/FormattedDate';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
-import {
-  getFastFoodTransactions,
-  getGroceryTransactions,
-  getUtilityTransactions,
-} from '../util/get-filtered-transactions';
+import { getFilteredTransactions } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
+import { TransactionCategories } from '../util/transaction-categories';
 
 export const Summary: FC = () => {
   const todayDate = new Date();
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const groceryTransactions = getGroceryTransactions(transactions);
+  const groceryTransactions = getFilteredTransactions(
+    transactions,
+    TransactionCategories.GroceryStoresAndSupermarkets
+  );
   const groceriesTotal = getTransactionsTotal(groceryTransactions);
 
-  const fastFoodTransactions = getFastFoodTransactions(transactions);
+  const fastFoodTransactions = getFilteredTransactions(
+    transactions,
+    TransactionCategories.FastFoodRestaurants
+  );
   const fastFoodTotal = getTransactionsTotal(fastFoodTransactions);
 
-  const utilityTransactions = getUtilityTransactions(transactions);
+  const utilityTransactions = getFilteredTransactions(
+    transactions,
+    TransactionCategories.Utilities
+  );
   const utilitiesTotal = getTransactionsTotal(utilityTransactions);
 
   return (
