@@ -11,7 +11,18 @@ export interface Transaction {
   type: string;
   description: string;
   merchantName: string;
-  categories: string[];
+  categories: Category[];
+}
+
+export interface Category {
+  name: string;
+  type: CategoryType;
+}
+
+export enum CategoryType {
+  Broad = 'nzfcc:pfm', // A broad level of categorisation
+  Group = 'nzfcc:group', // A slightly less granular level of categorisation
+  Base = 'nzfcc:base', // The most granular level of categorisation
 }
 
 export default async function handler(
@@ -58,7 +69,10 @@ const getMappedTransactions = (
       type: transaction.type,
       description: transaction.description,
       merchantName: transaction.merchant?.name,
-      categories: transaction.category?.components.map((c) => c.name),
+      categories: transaction.category?.components.map((c) => ({
+        name: c.name,
+        type: c.type as CategoryType,
+      })),
       logo: transaction.meta.logo,
     };
   });
