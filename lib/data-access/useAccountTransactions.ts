@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery, UseQueryOptions } from 'react-query';
 import { AccountTransactions } from './accountTransaction';
 
 export type AccountTransactionsHook = {
@@ -19,6 +19,10 @@ const fetchAccountTransactions = async () => {
 };
 
 export const useAccountTransactions = (): AccountTransactionsHook => {
+  const options: UseQueryOptions<AccountTransactions> = {
+    staleTime: 5 * 60 * 1000, //5 mins
+  };
+
   const {
     isLoading,
     isError,
@@ -28,7 +32,11 @@ export const useAccountTransactions = (): AccountTransactionsHook => {
     data,
     status,
     isFetched,
-  } = useQuery<AccountTransactions>('transactions', fetchAccountTransactions);
+  } = useQuery<AccountTransactions>(
+    'transactions',
+    fetchAccountTransactions,
+    options
+  );
 
   return {
     transactions: data ?? [],
