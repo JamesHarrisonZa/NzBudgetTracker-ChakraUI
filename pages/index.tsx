@@ -1,27 +1,19 @@
 import { SimpleGrid, VStack, Text, Box } from '@chakra-ui/react';
-import { FC, useEffect, useState } from 'react';
-import axios from 'axios';
+import { FC, useEffect } from 'react';
 import Head from 'next/head';
 import FormattedDate from '../components/FormattedDate';
-import { Transaction } from './api/akahu';
 import Layout, { siteTitle } from '../components/layout/Layout';
 import {
   getFastFoodTransactions,
   getGroceryTransactions,
   getUtilityTransactions,
 } from '../lib/util/filter-transactions';
+import { useAccountTransactions } from '../lib/data-access/useAccountTransactions';
 
 const Home: FC = () => {
   const todayDate = new Date();
 
-  const [transactions, setTransactions] = useState([] as Transaction[]);
-
-  useEffect(() => {
-    //TODO: MOVE to data-access lib
-    axios.get<Transaction[]>('/api/akahu').then((response) => {
-      setTransactions(response.data);
-    });
-  });
+  const { transactions, isLoading, isError } = useAccountTransactions();
 
   const groceryTransactions = getGroceryTransactions(transactions);
   const groceriesTotal = groceryTransactions.reduce(
