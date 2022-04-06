@@ -1,4 +1,4 @@
-export enum TransactionCategories {
+export enum TransactionCategory {
   // Broad
   Food = 'Food',
   Health = 'Health',
