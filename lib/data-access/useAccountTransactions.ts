@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { format } from 'date-fns';
 import { useAtom } from 'jotai';
 import { useQuery, UseQueryOptions } from 'react-query';
 import { AccountTransactions } from './accountTransaction';
@@ -15,8 +16,14 @@ export type AccountTransactionsHook = {
   isFetched: boolean;
 };
 
+const getFormattedDate = (date: Date) => format(date, 'yyyy-mm-dd');
+
 const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
-  const transactions = await axios.get<AccountTransactions>('/api/akahu');
+  const formattedStartDate = getFormattedDate(startDate);
+  const formattedEndDate = getFormattedDate(endDate);
+
+  const url = `/api/akahu?startDate=${formattedStartDate}&endDate=${formattedEndDate}`;
+  const transactions = await axios.get<AccountTransactions>(url);
   return transactions.data;
 };
 

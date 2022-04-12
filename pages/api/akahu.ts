@@ -40,13 +40,12 @@ export default async function handler(
 
   const akahu = new AkahuClient({ appToken });
 
-  const startDate = '2022-03-01'; //TODO make parameters
-  const endDate = '2022-03-31'; //TODO make parameters
-
+  const { startDate, endDate } = req.query;
   const queryParameters: TransactionQueryParams = {
-    start: startDate,
-    end: endDate,
+    start: startDate as string,
+    end: endDate as string,
   };
+
   const transactions = await akahu.accounts.listTransactions(
     userToken,
     accountId,
