@@ -1,3 +1,5 @@
+import { subDays } from 'date-fns';
+
 export const getCurrentDateThisMonth = (): Date => new Date();
 
 export const getFirstOfDateThisMonth = (): Date => {
@@ -16,8 +18,5 @@ export const getFirstOfDateLastMonth = (): Date => {
   );
 };
 
-export const getLastOfDateLastMonth = (): Date => {
-  const date = getFirstOfDateThisMonth();
-  date.setDate(date.getDate() - 1);
-  return date;
-};
+export const getLastOfDateLastMonth = (): Date =>
+  subDays(getFirstOfDateThisMonth(), 1);
