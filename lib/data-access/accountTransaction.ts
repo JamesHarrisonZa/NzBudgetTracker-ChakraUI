@@ -1,5 +1,5 @@
-import { Transaction } from '../../pages/api/akahu';
+import { AkahuTransaction } from '../../pages/api/akahu';
 
-export type AccountTransaction = Transaction;
+export type AccountTransaction = AkahuTransaction;
 
 export type AccountTransactions = AccountTransaction[];

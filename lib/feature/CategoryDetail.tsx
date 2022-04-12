@@ -14,6 +14,7 @@ import {
   Center,
   useColorMode,
   useColorModeValue,
+  Image,
 } from '@chakra-ui/react';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
 import { AccountTransactions } from '../data-access/accountTransaction';
@@ -29,6 +30,7 @@ const getTableHeading = () => {
   return (
     <Thead>
       <Tr>
+        <Th /> {/* Logo */}
         <Th>Merchant</Th>
         <Th>Amount</Th>
         <Th>Date</Th>
@@ -41,6 +43,9 @@ const getTableRows = (filteredTransactions: AccountTransactions) => {
   return filteredTransactions.map((transaction, i) => {
     return (
       <Tr key={i}>
+        <Td py="0">
+          <Image src={transaction.logoUrl} boxSize="50px" alt="No logo :(" />
+        </Td>
         <Td>{transaction.merchantName}</Td>
         <Td isNumeric>{transaction.amount}</Td>
         <Td>{transaction.date}</Td>
