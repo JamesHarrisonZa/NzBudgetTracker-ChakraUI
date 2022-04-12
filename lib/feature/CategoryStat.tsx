@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { StatLabel, Stat, StatNumber } from '@chakra-ui/react';
+import { StatLabel, Stat, StatNumber, Button, Center } from '@chakra-ui/react';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
 import { TransactionCategory } from '../util/transaction-categories';
 import { getFilteredTransactions } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
+import Link from 'next/link';
 
 interface OwnProps {
   label: string;
@@ -19,9 +20,14 @@ export const CategoryStat: FC<OwnProps> = (props: OwnProps) => {
   const total = getTransactionsTotal(filteredTransactions);
 
   return (
-    <Stat>
-      <StatLabel>{label}</StatLabel>
-      <StatNumber>${total}</StatNumber>
-    </Stat>
+    <>
+      <Stat>
+        <StatLabel>{label}</StatLabel>
+        <StatNumber>${total}</StatNumber>
+        <Link href={`/category/${category}`} passHref>
+          <Button colorScheme="blue">Details</Button>
+        </Link>
+      </Stat>
+    </>
   );
 };

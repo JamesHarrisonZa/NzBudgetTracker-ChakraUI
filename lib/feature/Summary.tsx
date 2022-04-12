@@ -14,26 +14,26 @@ export const Summary: FC = () => {
       </Text>
       <Text as="b">Amounts spent this month</Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
-        <CategoryStat label="on food" category={TransactionCategory.Food} />
-        <CategoryStat label="on health" category={TransactionCategory.Health} />
+        <CategoryStat label="Food" category={TransactionCategory.Food} />
+        <CategoryStat label="Health" category={TransactionCategory.Health} />
         <CategoryStat
-          label="on utilities"
+          label="Utilities"
           category={TransactionCategory.Utilities}
         />
         <CategoryStat
-          label="on transport"
+          label="Transport"
           category={TransactionCategory.Transport}
         />
         <CategoryStat
-          label="on lifestyle"
+          label="Lifestyle"
           category={TransactionCategory.Lifestyle}
         />
         <CategoryStat
-          label="on household"
+          label="Household"
           category={TransactionCategory.Household}
         />
         <CategoryStat
-          label="on professionalFees"
+          label="Professional Fees"
           category={TransactionCategory.ProfessionalFees}
         />
       </SimpleGrid>
