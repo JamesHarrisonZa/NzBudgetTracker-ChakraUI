@@ -1,8 +1,8 @@
-import { Transaction } from '../../pages/api/akahu';
+import { AccountTransactions } from '../data-access/accountTransaction';
 import { TransactionCategory } from './transaction-categories';
 
 export const getFilteredTransactions = (
-  transactions: Transaction[],
+  transactions: AccountTransactions,
   category: TransactionCategory
 ) =>
   transactions.filter((transaction) =>
