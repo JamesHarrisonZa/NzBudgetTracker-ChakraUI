@@ -1,15 +1,15 @@
-# 💲💲💲 New Zealand budget tracker 💲💲💲
+# 💲 New Zealand budget tracker
 
 I spend too much money 😶. I want to save more. This exists to help get closer to the dream of affording a house deposit in New Zealand. 😑
 
-## 🙌 Getting Started
+## ⚡ Getting Started
 
-### Akahu details
+### 🔌 Akahu details
 
 - Copy/duplicate the `.env.example` and name it `.env.local`
 - Add Akahu details to `env.local`. You will need an account. See [here](https://developers.akahu.nz/docs/personal-apps) for more information
 
-### Running the app
+### 🚀 Running the app
 
 ```bash
 npm run dev
@@ -17,7 +17,7 @@ npm run dev
 yarn dev
 ```
 
-## 🛠 TODO
+## 🔧 TODO
 
 - Date range.
 - Compare last month to this month.
