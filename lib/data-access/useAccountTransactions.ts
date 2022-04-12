@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { useAtom } from 'jotai';
 import { useQuery, UseQueryOptions } from 'react-query';
 import { AccountTransactions } from './accountTransaction';
+import { endDateAtom, startDateAtom } from './atoms/date-range';
 
 export type AccountTransactionsHook = {
   transactions: AccountTransactions;
@@ -22,6 +24,9 @@ export const useAccountTransactions = (): AccountTransactionsHook => {
   const options: UseQueryOptions<AccountTransactions> = {
     staleTime: 5 * 60 * 1000, //5 mins
   };
+
+  const [startDate] = useAtom(startDateAtom);
+  const [endDate] = useAtom(endDateAtom);
 
   const {
     isLoading,

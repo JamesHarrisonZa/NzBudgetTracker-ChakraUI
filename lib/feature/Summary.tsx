@@ -3,24 +3,50 @@ import { SimpleGrid, VStack, Text, Button, Stack } from '@chakra-ui/react';
 import { CategoryStat } from './CategoryStat';
 import FormattedDate from '../ui/FormattedDate';
 import { TransactionCategory } from '../util/transaction-categories';
+import {
+  getFirstOfDateThisMonth,
+  getCurrentDateThisMonth,
+  getFirstOfDateLastMonth,
+  getLastOfDateLastMonth,
+} from '../util/get-dates';
+import { useAtom } from 'jotai';
+import { startDateAtom, endDateAtom } from '../data-access/atoms/date-range';
 
 export const Summary: FC = () => {
   const todayDate = new Date();
+
   const [isThisMonthDateRange, setIsThisMonthDateRange] = useState(true);
   const [isLastMonthDateRange, setIsLastMonthDateRange] = useState(false);
 
+  const [_startDate, setStartDate] = useAtom(startDateAtom);
+  const [_endDate, setEndDate] = useAtom(endDateAtom);
+
+  const setDateRangeToThisMonth = () => {
+    setStartDate(getFirstOfDateThisMonth());
+    setEndDate(getCurrentDateThisMonth());
+  };
+
+  const setDateRangeToLastMonth = () => {
+    setStartDate(getFirstOfDateLastMonth());
+    setEndDate(getLastOfDateLastMonth());
+  };
+
   const handleThisMonthOnClick = () => {
-    if (!isThisMonthDateRange) {
-      setIsThisMonthDateRange(true);
-      setIsLastMonthDateRange(false);
+    if (isThisMonthDateRange) {
+      return;
     }
+    setIsThisMonthDateRange(true);
+    setIsLastMonthDateRange(false);
+    setDateRangeToThisMonth();
   };
 
   const handleLastMonthOnClick = () => {
-    if (!isLastMonthDateRange) {
-      setIsThisMonthDateRange(false);
-      setIsLastMonthDateRange(true);
+    if (isLastMonthDateRange) {
+      return;
     }
+    setIsThisMonthDateRange(false);
+    setIsLastMonthDateRange(true);
+    setDateRangeToLastMonth();
   };
 
   return (
