@@ -2,18 +2,14 @@ import { FC } from 'react';
 import {
   TableContainer,
   Table,
-  TableCaption,
   Thead,
   Tr,
   Th,
   Tbody,
   Td,
-  Tfoot,
   Heading,
   Flex,
   Center,
-  useColorMode,
-  useColorModeValue,
   Image,
 } from '@chakra-ui/react';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
@@ -21,38 +17,36 @@ import { AccountTransactions } from '../data-access/accountTransaction';
 import { TransactionCategory } from '../util/transaction-categories';
 import { getFilteredTransactions } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
+import FormattedDate from '../ui/FormattedDate';
 
 interface OwnProps {
   category: TransactionCategory;
 }
 
-const getTableHeading = () => {
-  return (
-    <Thead>
-      <Tr>
-        <Th /> {/* Logo */}
-        <Th>Merchant</Th>
-        <Th>Amount</Th>
-        <Th>Date</Th>
-      </Tr>
-    </Thead>
-  );
-};
+const getTableHeading = () => (
+  <Thead>
+    <Tr>
+      <Th /> {/* Logo */}
+      <Th>Merchant</Th>
+      <Th>Amount</Th>
+      <Th>Date</Th>
+    </Tr>
+  </Thead>
+);
 
-const getTableRows = (filteredTransactions: AccountTransactions) => {
-  return filteredTransactions.map((transaction, i) => {
-    return (
-      <Tr key={i}>
-        <Td py="0">
-          <Image src={transaction.logoUrl} boxSize="50px" alt="No logo :(" />
-        </Td>
-        <Td>{transaction.merchantName}</Td>
-        <Td isNumeric>{transaction.amount}</Td>
-        <Td>{transaction.date}</Td>
-      </Tr>
-    );
-  });
-};
+const getTableRows = (filteredTransactions: AccountTransactions) =>
+  filteredTransactions.map((transaction, i) => (
+    <Tr key={i}>
+      <Td py="0">
+        <Image src={transaction.logoUrl} boxSize="50px" alt="No logo :(" />
+      </Td>
+      <Td>{transaction.merchantName}</Td>
+      <Td isNumeric>{transaction.amount}</Td>
+      <Td>
+        <FormattedDate date={new Date(transaction.date)} />
+      </Td>
+    </Tr>
+  ));
 
 export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
   const { category } = props;

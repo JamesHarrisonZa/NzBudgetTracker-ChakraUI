@@ -10,7 +10,7 @@ export const Summary: FC = () => {
   return (
     <VStack w="full" h="full" p={10} spacing={10}>
       <Text as="b">
-        <FormattedDate date={todayDate} />
+        <FormattedDate date={todayDate} includeYear />
       </Text>
       <Text as="b">Amounts spent this month</Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
