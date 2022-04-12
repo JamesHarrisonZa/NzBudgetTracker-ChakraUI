@@ -4,6 +4,6 @@ import {
   getFirstOfDateThisMonth,
 } from '../../util/get-dates';
 
-export const startDateAtom = atom(getCurrentDateThisMonth());
+export const startDateAtom = atom(getFirstOfDateThisMonth());
 
-export const endDateAtom = atom(getFirstOfDateThisMonth());
+export const endDateAtom = atom(getCurrentDateThisMonth());

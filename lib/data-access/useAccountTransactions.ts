@@ -15,7 +15,7 @@ export type AccountTransactionsHook = {
   isFetched: boolean;
 };
 
-const fetchAccountTransactions = async () => {
+const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
   const transactions = await axios.get<AccountTransactions>('/api/akahu');
   return transactions.data;
 };
@@ -38,8 +38,9 @@ export const useAccountTransactions = (): AccountTransactionsHook => {
     status,
     isFetched,
   } = useQuery<AccountTransactions>(
-    'transactions',
-    fetchAccountTransactions,
+    ['transactions', startDate, endDate],
+    ({ queryKey }) =>
+      fetchAccountTransactions(queryKey[1] as Date, queryKey[2] as Date),
     options
   );
 
