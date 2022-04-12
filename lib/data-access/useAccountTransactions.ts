@@ -16,7 +16,7 @@ export type AccountTransactionsHook = {
   isFetched: boolean;
 };
 
-const getFormattedDate = (date: Date) => format(date, 'yyyy-mm-dd');
+const getFormattedDate = (date: Date) => format(date, 'yyyy-MM-dd');
 
 const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
   const formattedStartDate = getFormattedDate(startDate);
