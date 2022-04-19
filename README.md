@@ -21,7 +21,6 @@ yarn dev
 
 ### Small
 
-- Persist this month/last month buttons across pages.
 - Adjust category groupings.
 - Find good default images for credits/debits
 
@@ -30,6 +29,6 @@ yarn dev
 - Add pending transactions from Akahu.
 - Compare last month to this month.
 
-### Big
+### Large
 
 - Set budget goals for categories.
