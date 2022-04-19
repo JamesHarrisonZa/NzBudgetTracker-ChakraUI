@@ -4,31 +4,11 @@ import {
   EnrichedTransaction,
   TransactionQueryParams,
 } from 'akahu';
-
-export interface AkahuTransaction {
-  date: string;
-  amount: number;
-  type: string;
-  description: string;
-  merchantName: string;
-  categories: Category[];
-  logoUrl?: string;
-}
-
-export interface Category {
-  name: string;
-  type: CategoryType;
-}
-
-export enum CategoryType {
-  Broad = 'nzfcc:pfm', // A broad level of categorisation
-  Group = 'nzfcc:group', // A slightly less granular level of categorisation
-  Base = 'nzfcc:base', // The most granular level of categorisation
-}
+import { Transaction, CategoryType } from './types/Transaction';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<AkahuTransaction[]>
+  res: NextApiResponse<Transaction[]>
 ) {
   const appToken = process.env.AKAHU_APP_TOKEN as string;
   const userToken = process.env.AKAHU_USER_TOKEN as string;
@@ -61,7 +41,7 @@ export default async function handler(
 
 const getMappedTransactions = (
   transactions: EnrichedTransaction[]
-): AkahuTransaction[] =>
+): Transaction[] =>
   transactions.map((transaction) => {
     return {
       date: transaction.date,

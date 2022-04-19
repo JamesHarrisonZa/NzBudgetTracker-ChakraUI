@@ -1,8 +1,9 @@
-import { AccountTransactions } from '../data-access/accountTransaction';
-import { TransactionCategory } from './transaction-categories';
+import { Transactions } from '../../pages/api/types/Transaction';
+import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
+import { TransactionType } from '../../pages/api/types/TransactionTypes';
 
 export const getFilteredTransactions = (
-  transactions: AccountTransactions,
+  transactions: Transactions,
   category: TransactionCategory
 ) =>
   transactions.filter((transaction) =>

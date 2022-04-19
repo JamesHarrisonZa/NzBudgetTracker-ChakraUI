@@ -2,11 +2,11 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import { useAtom } from 'jotai';
 import { useQuery, UseQueryOptions } from 'react-query';
-import { AccountTransactions } from './accountTransaction';
+import { Transactions } from '../../pages/api/types/Transaction';
 import { endDateAtom, startDateAtom } from './atoms/date-range';
 
 export type AccountTransactionsHook = {
-  transactions: AccountTransactions;
+  transactions: Transactions;
   isLoading: boolean;
   error: unknown;
   isError: boolean;
@@ -23,13 +23,13 @@ const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
   const formattedEndDate = getFormattedDate(endDate);
 
   const url = `/api/akahu?startDate=${formattedStartDate}&endDate=${formattedEndDate}`;
-  const transactions = await axios.get<AccountTransactions>(url);
+  const transactions = await axios.get<Transactions>(url);
   return transactions.data;
 };
 
 export const useAccountTransactions = (): AccountTransactionsHook => {
   const fiveMinutes = 5 * 60 * 1000;
-  const options: UseQueryOptions<AccountTransactions> = {
+  const options: UseQueryOptions<Transactions> = {
     staleTime: fiveMinutes,
   };
 
@@ -45,7 +45,7 @@ export const useAccountTransactions = (): AccountTransactionsHook => {
     data,
     status,
     isFetched,
-  } = useQuery<AccountTransactions>(
+  } = useQuery<Transactions>(
     ['transactions', startDate, endDate],
     ({ queryKey }) =>
       fetchAccountTransactions(queryKey[1] as Date, queryKey[2] as Date),

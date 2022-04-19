@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../../lib/ui/layout/Layout';
 import { CategoryDetail } from '../../lib/feature/CategoryDetail';
 import { useRouter } from 'next/router';
-import { TransactionCategory } from '../../lib/util/transaction-categories';
+import { TransactionCategory } from '../api/TransactionCategory';
 
 const Detail: FC = () => {
   const router = useRouter();

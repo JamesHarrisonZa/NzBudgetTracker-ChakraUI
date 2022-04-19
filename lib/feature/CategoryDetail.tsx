@@ -15,9 +15,9 @@ import {
   Spinner,
   VisuallyHidden,
 } from '@chakra-ui/react';
+import { Transactions } from '../../pages/api/types/Transaction';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
-import { AccountTransactions } from '../data-access/accountTransaction';
-import { TransactionCategory } from '../util/transaction-categories';
+import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
 import { getFilteredTransactions } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
 import FormattedDate from '../ui/FormattedDate';
@@ -37,7 +37,7 @@ const getTableHeading = () => (
   </Thead>
 );
 
-const getTableRows = (filteredTransactions: AccountTransactions) =>
+const getTableRows = (filteredTransactions: Transactions) =>
   filteredTransactions.map((transaction, i) => (
     <Tr key={i}>
       <Td py="0">

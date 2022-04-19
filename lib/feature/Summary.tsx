@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { SimpleGrid, VStack, Text, Button, Stack } from '@chakra-ui/react';
 import { CategoryStat } from './CategoryStat';
 import FormattedDate from '../ui/FormattedDate';
-import { TransactionCategory } from '../util/transaction-categories';
+import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
 import {
   getFirstOfDateThisMonth,
   getCurrentDateThisMonth,
