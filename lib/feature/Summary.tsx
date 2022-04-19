@@ -7,6 +7,7 @@ import { CategoryStat } from './stat/CategoryStat';
 import { MonthSelector } from './MonthSelector';
 import FormattedDate from '../ui/FormattedDate';
 import { GroceriesStat } from './stat/GroceriesStat';
+import { AlcoholStat } from './stat/AlcoholStat';
 
 export const Summary: FC = () => {
   const todayDate = new Date();
@@ -18,13 +19,22 @@ export const Summary: FC = () => {
       </Text>
       <MonthSelector />
 
-      <TypeStat label="Credit" type={TransactionType.Credit} />
-
-      <Text as="b">Amounts spent</Text>
-      <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing={10}>
+      <SimpleGrid columns={{ sm: 1, md: 3, lg: 3 }} spacing={10}>
+        <TypeStat label="Credit" type={TransactionType.Credit} />
         <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
         <TypeStat label="Payments" type={TransactionType.Payment} />
+      </SimpleGrid>
+
+      <Text as="b" margin="0">
+        Grouped categories
+      </Text>
+      <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing={10}>
         <GroceriesStat />
+        <AlcoholStat />
+      </SimpleGrid>
+
+      <Text as="b">High level categories</Text>
+      <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing={10}>
         <CategoryStat label="Food" category={TransactionCategory.Food} />
         <CategoryStat label="Health" category={TransactionCategory.Health} />
         <CategoryStat
