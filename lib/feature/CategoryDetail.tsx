@@ -11,6 +11,9 @@ import {
   Flex,
   Center,
   Image,
+  Skeleton,
+  Spinner,
+  VisuallyHidden,
 } from '@chakra-ui/react';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
 import { AccountTransactions } from '../data-access/accountTransaction';
@@ -65,10 +68,16 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
         <Heading>{category}</Heading>
       </Center>
       <Center>
-        <Heading>${total}</Heading>
+        {isLoading ? (
+          <>
+            <Spinner color="teal" size="xl" />
+            <br />
+          </>
+        ) : (
+          <Heading>${total}</Heading>
+        )}
       </Center>
       <TableContainer>
-        {/* TODO match with colour theme */}
         <Table variant="striped" colorScheme="blue">
           {tableHeading}
           <Tbody>{tableRows}</Tbody>
