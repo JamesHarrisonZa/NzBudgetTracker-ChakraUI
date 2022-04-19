@@ -13,6 +13,7 @@ export const FastFoodStat: FC<OwnProps> = (props: OwnProps) => {
   const categories = [
     TransactionCategory.FastFoodRestaurants,
     TransactionCategory.CafesAndRestaurants,
+    TransactionCategory.IceCreamGelatoCandyNutAndConfectioneryStores,
   ];
 
   const { transactions, isLoading, isError } = useAccountTransactions();

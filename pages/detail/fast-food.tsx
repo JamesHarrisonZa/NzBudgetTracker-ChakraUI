@@ -9,6 +9,7 @@ const FastFoodDetail: FC = () => {
   const categories = [
     TransactionCategory.FastFoodRestaurants,
     TransactionCategory.CafesAndRestaurants,
+    TransactionCategory.IceCreamGelatoCandyNutAndConfectioneryStores,
   ];
 
   return (

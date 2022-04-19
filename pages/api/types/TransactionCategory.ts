@@ -45,4 +45,5 @@ export enum TransactionCategory {
   ServiceStations = 'Service Stations',
   HealthAndBeautySpas = 'Health & beauty spas',
   PostalServicesGovernmentOnly = 'Postal Services – Government Only',
+  IceCreamGelatoCandyNutAndConfectioneryStores = 'Ice Cream, Gelato, Candy, Nut and Confectionery Stores',
 }
