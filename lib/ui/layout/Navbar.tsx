@@ -10,6 +10,7 @@ import {
   MenuDivider,
   useColorModeValue,
   Stack,
+  Text,
   useColorMode,
   Center,
   Heading,
@@ -17,12 +18,14 @@ import {
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
 import Link from 'next/link';
+import FormattedDate from '../FormattedDate';
 
 const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const gradientStartColour = useColorModeValue('cyan.400', 'cyan.600');
   const gradientEndColour = useColorModeValue('pink.500', 'purple.600');
   const bgGradient = `linear(to-r, ${gradientStartColour}, ${gradientEndColour})`;
+  const todayDate = new Date();
 
   return (
     <>
@@ -35,8 +38,9 @@ const Navbar: FC = () => {
           </Heading>
 
           <Flex alignItems={'center'}>
+            <FormattedDate date={todayDate} includeYear />
             <Stack direction={'row'} spacing={7}>
-              <Button bg="inherit" onClick={toggleColorMode}>
+              <Button bg="inherit" ml="5" onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
 

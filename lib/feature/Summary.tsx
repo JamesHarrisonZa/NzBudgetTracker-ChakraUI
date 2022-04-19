@@ -17,13 +17,10 @@ export const Summary: FC = () => {
 
   return (
     <VStack w="full" h="full" p={10} spacing={10}>
-      <Text as="b">
-        <FormattedDate date={todayDate} includeYear />
-      </Text>
       <MonthSelector />
+      <TypeStat label="Credit" type={TransactionType.Credit} />
 
-      <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={10}>
-        <TypeStat label="Credit" type={TransactionType.Credit} />
+      <SimpleGrid columns={{ sm: 2, md: 2 }} spacing={10}>
         <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
         <TypeStat label="Payments" type={TransactionType.Payment} />
       </SimpleGrid>
