@@ -5,10 +5,16 @@ import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
 import { TypeStat } from './TypeStat';
 import { CategoryStat } from './CategoryStat';
 import { MonthSelector } from './MonthSelector';
+import FormattedDate from '../ui/FormattedDate';
 
 export const Summary: FC = () => {
+  const todayDate = new Date();
+
   return (
     <VStack w="full" h="full" p={10} spacing={10}>
+      <Text as="b">
+        <FormattedDate date={todayDate} includeYear />
+      </Text>
       <MonthSelector />
 
       <TypeStat label="Credit" type={TransactionType.Credit} />

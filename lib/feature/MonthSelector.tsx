@@ -1,18 +1,15 @@
 import { useAtom } from 'jotai';
 import { FC, useState } from 'react';
-import { VStack, Text, Button, Stack } from '@chakra-ui/react';
+import { Button, Stack } from '@chakra-ui/react';
 import {
   getFirstOfDateThisMonth,
   getCurrentDateThisMonth,
   getFirstOfDateLastMonth,
   getLastOfDateLastMonth,
 } from '../util/get-dates';
-import FormattedDate from '../ui/FormattedDate';
 import { startDateAtom, endDateAtom } from '../data-access/atoms/date-range';
 
 export const MonthSelector: FC = () => {
-  const todayDate = new Date();
-
   const [isThisMonthDateRange, setIsThisMonthDateRange] = useState(true);
   const [isLastMonthDateRange, setIsLastMonthDateRange] = useState(false);
 
@@ -49,9 +46,6 @@ export const MonthSelector: FC = () => {
 
   return (
     <>
-      <Text as="b">
-        <FormattedDate date={todayDate} includeYear />
-      </Text>
       <Stack direction="row" spacing={4} align="center">
         <Button
           colorScheme="teal"
