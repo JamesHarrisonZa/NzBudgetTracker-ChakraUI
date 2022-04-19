@@ -7,6 +7,7 @@ import { MonthSelector } from './MonthSelector';
 import { TypeStat } from './stat/TypeStat';
 import { CategoryStat } from './stat/CategoryStat';
 import { UtilitiesStat } from './stat/UtilitiesStat';
+import { EntertainmentStat } from './stat/EntertainmentStat';
 import { GroceriesStat } from './stat/GroceriesStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';
@@ -21,7 +22,7 @@ export const Summary: FC = () => {
       </Text>
       <MonthSelector />
 
-      <SimpleGrid columns={{ sm: 2, md: 3, lg: 3 }} spacing={10}>
+      <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={10}>
         <TypeStat label="Credit" type={TransactionType.Credit} />
         <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
         <TypeStat label="Payments" type={TransactionType.Payment} />
@@ -30,8 +31,9 @@ export const Summary: FC = () => {
       <Text as="b" margin="0">
         Grouped categories
       </Text>
-      <SimpleGrid columns={{ sm: 2, md: 4 }} spacing={10}>
+      <SimpleGrid columns={{ sm: 2, md: 3, lg: 5 }} spacing={10}>
         <UtilitiesStat />
+        <EntertainmentStat />
         <GroceriesStat />
         <AlcoholStat />
         <FastFoodStat />
