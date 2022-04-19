@@ -10,7 +10,6 @@ import {
   MenuDivider,
   useColorModeValue,
   Stack,
-  Text,
   useColorMode,
   Center,
   Heading,
