@@ -21,6 +21,7 @@ import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
 import { getTransactionsByCategory } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
 import FormattedDate from '../ui/FormattedDate';
+import { MonthSelector } from './MonthSelector';
 
 interface OwnProps {
   category: TransactionCategory;
@@ -79,6 +80,9 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
         ) : (
           <Heading>${total}</Heading>
         )}
+      </Center>
+      <Center>
+        <MonthSelector />
       </Center>
       <TableContainer>
         <Table variant="striped" colorScheme="blue">

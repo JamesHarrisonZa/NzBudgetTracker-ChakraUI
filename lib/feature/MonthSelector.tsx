@@ -7,11 +7,12 @@ import {
   getFirstOfDateLastMonth,
   getLastOfDateLastMonth,
 } from '../util/get-dates';
+import { isThisMonthAtom } from '../data-access/atoms/selected-month';
 import { startDateAtom, endDateAtom } from '../data-access/atoms/date-range';
 
 export const MonthSelector: FC = () => {
-  const [isThisMonthDateRange, setIsThisMonthDateRange] = useState(true);
-  const [isLastMonthDateRange, setIsLastMonthDateRange] = useState(false);
+  const [isThisMonthDateRange, setIsThisMonthDateRange] =
+    useAtom(isThisMonthAtom);
 
   const [_startDate, setStartDate] = useAtom(startDateAtom);
   const [_endDate, setEndDate] = useAtom(endDateAtom);
@@ -31,16 +32,14 @@ export const MonthSelector: FC = () => {
       return;
     }
     setIsThisMonthDateRange(true);
-    setIsLastMonthDateRange(false);
     setDateRangeToThisMonth();
   };
 
   const handleLastMonthOnClick = () => {
-    if (isLastMonthDateRange) {
+    if (!isThisMonthDateRange) {
       return;
     }
     setIsThisMonthDateRange(false);
-    setIsLastMonthDateRange(true);
     setDateRangeToLastMonth();
   };
 
@@ -49,7 +48,7 @@ export const MonthSelector: FC = () => {
       <Stack direction="row" spacing={4} align="center">
         <Button
           colorScheme="teal"
-          variant={isLastMonthDateRange ? 'solid' : 'outline'}
+          variant={!isThisMonthDateRange ? 'solid' : 'outline'}
           onClick={handleLastMonthOnClick}
         >
           last month
