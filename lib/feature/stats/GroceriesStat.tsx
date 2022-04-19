@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
-import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
-import { useAccountTransactions } from '../data-access/useAccountTransactions';
-import { getTransactionsByCategories } from '../util/get-filtered-transactions';
-import { getTransactionsTotal } from '../util/get-transactions-total';
 import Link from 'next/link';
+import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
+import { TransactionCategory } from '../../../pages/api/types/TransactionCategory';
+import { useAccountTransactions } from '../../data-access/useAccountTransactions';
+import { getTransactionsByCategories } from '../../util/get-filtered-transactions';
+import { getTransactionsTotal } from '../../util/get-transactions-total';
 
 interface OwnProps {}
 

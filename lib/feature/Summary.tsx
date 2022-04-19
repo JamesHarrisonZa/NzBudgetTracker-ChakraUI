@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { TransactionType } from '../../pages/api/types/TransactionType';
 import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
-import { TypeStat } from './TypeStat';
-import { CategoryStat } from './CategoryStat';
+import { TypeStat } from './stats/TypeStat';
+import { CategoryStat } from './stats/CategoryStat';
 import { MonthSelector } from './MonthSelector';
 import FormattedDate from '../ui/FormattedDate';
-import { GroceriesStat } from './GroceriesStat';
+import { GroceriesStat } from './stats/GroceriesStat';
 
 export const Summary: FC = () => {
   const todayDate = new Date();
