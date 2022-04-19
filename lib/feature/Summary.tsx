@@ -20,7 +20,7 @@ export const Summary: FC = () => {
       <TypeStat label="Credit" type={TransactionType.Credit} />
 
       <Text as="b">Amounts spent</Text>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing={10}>
         <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
         <TypeStat label="Payments" type={TransactionType.Payment} />
         <CategoryStat label="Food" category={TransactionCategory.Food} />
