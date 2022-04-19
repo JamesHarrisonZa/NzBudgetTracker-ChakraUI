@@ -19,9 +19,17 @@ yarn dev
 
 ## 🔧 TODO
 
-- Date range.
-- Compare last month to this month.
-- Set budget goals for categories.
+### Small
+
+- Persist this month/last month buttons across pages.
 - Adjust category groupings.
-- Rent transactions. Im assuming they have no category and cant be grouped.
-- Get pending transactions from Akahu.
+- Find good default images for credits/debits
+
+### Medium
+
+- Add pending transactions from Akahu.
+- Compare last month to this month.
+
+### Big
+
+- Set budget goals for categories.
