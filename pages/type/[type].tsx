@@ -1,20 +1,20 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../lib/ui/layout/Layout';
-import { CategoryDetail } from '../../lib/feature/CategoryDetail';
+import { TypeDetail } from '../../lib/feature/TypeDetail';
 import { useRouter } from 'next/router';
-import { TransactionCategory } from '../api/types/TransactionCategory';
+import { TransactionType } from '../api/types/TransactionType';
 
 const Detail: FC = () => {
   const router = useRouter();
-  const { category } = router.query;
+  const { type } = router.query;
 
   return (
     <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <CategoryDetail category={category as TransactionCategory} />
+      <TypeDetail type={type as TransactionType} />
     </Layout>
   );
 };

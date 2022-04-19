@@ -30,7 +30,7 @@ const getTableHeading = () => (
   <Thead>
     <Tr>
       <Th /> {/* Logo */}
-      <Th>Merchant</Th>
+      <Th>Description</Th>
       <Th>Amount</Th>
       <Th>Date</Th>
     </Tr>
@@ -43,7 +43,7 @@ const getTableRows = (filteredTransactions: Transactions) =>
       <Td py="0">
         <Image src={transaction.logoUrl} boxSize="50px" alt="" />
       </Td>
-      <Td>{transaction.merchantName}</Td>
+      <Td>{transaction.description}</Td>
       <Td isNumeric>{transaction.amount.toFixed(2)}</Td>
       <Td>
         <FormattedDate date={new Date(transaction.date)} />
@@ -51,7 +51,7 @@ const getTableRows = (filteredTransactions: Transactions) =>
     </Tr>
   ));
 
-export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
+export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
   const { type } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();

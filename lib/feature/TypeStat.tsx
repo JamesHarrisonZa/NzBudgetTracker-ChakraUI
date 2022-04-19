@@ -30,9 +30,9 @@ export const TypeStat: FC<OwnProps> = (props: OwnProps) => {
       ) : (
         <StatNumber>${total}</StatNumber>
       )}
-      {/* <Link href={`/category/${category}`} passHref>
+      <Link href={`/type/${type}`} passHref>
         <Button colorScheme="blue">Details</Button>
-      </Link> */}
+      </Link>
     </Stat>
   );
 };
