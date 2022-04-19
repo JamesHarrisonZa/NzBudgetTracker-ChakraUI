@@ -6,6 +6,7 @@ import { TypeStat } from './TypeStat';
 import { CategoryStat } from './CategoryStat';
 import { MonthSelector } from './MonthSelector';
 import FormattedDate from '../ui/FormattedDate';
+import { GroceriesStat } from './GroceriesStat';
 
 export const Summary: FC = () => {
   const todayDate = new Date();
@@ -23,6 +24,7 @@ export const Summary: FC = () => {
       <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing={10}>
         <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
         <TypeStat label="Payments" type={TransactionType.Payment} />
+        <GroceriesStat />
         <CategoryStat label="Food" category={TransactionCategory.Food} />
         <CategoryStat label="Health" category={TransactionCategory.Health} />
         <CategoryStat
