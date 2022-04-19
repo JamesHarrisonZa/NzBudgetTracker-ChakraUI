@@ -11,27 +11,25 @@ import {
   Flex,
   Center,
   Image,
-  Skeleton,
   Spinner,
-  VisuallyHidden,
 } from '@chakra-ui/react';
-import { Transactions } from '../../pages/api/types/Transaction';
-import { TransactionType } from '../../pages/api/types/TransactionType';
-import { useAccountTransactions } from '../data-access/useAccountTransactions';
-import { getTransactionsByType } from '../util/get-filtered-transactions';
-import { getTransactionsTotal } from '../util/get-transactions-total';
-import FormattedDate from '../ui/FormattedDate';
-import { MonthSelector } from './MonthSelector';
+import { Transactions } from '../../../pages/api/types/Transaction';
+import { useAccountTransactions } from '../../data-access/useAccountTransactions';
+import { TransactionCategory } from '../../../pages/api/types/TransactionCategory';
+import { getTransactionsByCategory } from '../../util/get-filtered-transactions';
+import { getTransactionsTotal } from '../../util/get-transactions-total';
+import FormattedDate from '../../ui/FormattedDate';
+import { MonthSelector } from '../MonthSelector';
 
 interface OwnProps {
-  type: TransactionType;
+  category: TransactionCategory;
 }
 
 const getTableHeading = () => (
   <Thead>
     <Tr>
       <Th /> {/* Logo */}
-      <Th>Description</Th>
+      <Th>Merchant</Th>
       <Th>Amount</Th>
       <Th>Date</Th>
     </Tr>
@@ -44,7 +42,7 @@ const getTableRows = (filteredTransactions: Transactions) =>
       <Td py="0">
         <Image src={transaction.logoUrl} boxSize="50px" alt="" />
       </Td>
-      <Td>{transaction.description}</Td>
+      <Td>{transaction.merchantName}</Td>
       <Td isNumeric>{transaction.amount.toFixed(2)}</Td>
       <Td>
         <FormattedDate date={new Date(transaction.date)} />
@@ -52,12 +50,17 @@ const getTableRows = (filteredTransactions: Transactions) =>
     </Tr>
   ));
 
-export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
-  const { type } = props;
+export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
+  const { category } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByType(transactions, type);
+  const filteredTransactions = getTransactionsByCategory(
+    transactions,
+    category
+  );
+  console.log(filteredTransactions);
+
   const total = getTransactionsTotal(filteredTransactions);
 
   const tableHeading = getTableHeading();
@@ -66,7 +69,7 @@ export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
   return (
     <Flex direction="column" flexGrow={1}>
       <Center>
-        <Heading>{type}</Heading>
+        <Heading>{category}</Heading>
       </Center>
       <Center>
         {isLoading ? (

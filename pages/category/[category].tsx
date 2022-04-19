@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../lib/ui/layout/Layout';
-import { CategoryDetail } from '../../lib/feature/CategoryDetail';
+import { CategoryDetail } from '../../lib/feature/detail/CategoryDetail';
 import { useRouter } from 'next/router';
 import { TransactionCategory } from '../api/types/TransactionCategory';
 
