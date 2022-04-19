@@ -28,8 +28,9 @@ const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
 };
 
 export const useAccountTransactions = (): AccountTransactionsHook => {
+  const fiveMinutes = 5 * 60 * 1000;
   const options: UseQueryOptions<AccountTransactions> = {
-    staleTime: 5 * 60 * 1000, //5 mins
+    staleTime: fiveMinutes,
   };
 
   const [startDate] = useAtom(startDateAtom);
