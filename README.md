@@ -21,13 +21,12 @@ yarn dev
 
 ### Small
 
-- Adjust category groupings.
 - Find good default images for credits/debits
 
 ### Medium
 
 - Add pending transactions from Akahu.
-- Compare last month to this month.
+- Update stats to compare last month to this month.
 
 ### Large
 
