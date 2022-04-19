@@ -6,6 +6,7 @@ import FormattedDate from '../ui/FormattedDate';
 import { MonthSelector } from './MonthSelector';
 import { TypeStat } from './stat/TypeStat';
 import { CategoryStat } from './stat/CategoryStat';
+import { UtilitiesStat } from './stat/UtilitiesStat';
 import { GroceriesStat } from './stat/GroceriesStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';
@@ -29,7 +30,8 @@ export const Summary: FC = () => {
       <Text as="b" margin="0">
         Grouped categories
       </Text>
-      <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={10}>
+      <SimpleGrid columns={{ sm: 2, md: 4 }} spacing={10}>
+        <UtilitiesStat />
         <GroceriesStat />
         <AlcoholStat />
         <FastFoodStat />

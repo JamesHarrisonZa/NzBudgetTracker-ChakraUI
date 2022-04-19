@@ -59,6 +59,7 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
     transactions,
     category
   );
+  console.log(filteredTransactions);
 
   const total = getTransactionsTotal(filteredTransactions);
 
