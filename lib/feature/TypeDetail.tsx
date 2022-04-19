@@ -21,6 +21,7 @@ import { useAccountTransactions } from '../data-access/useAccountTransactions';
 import { getTransactionsByType } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
 import FormattedDate from '../ui/FormattedDate';
+import { MonthSelector } from './MonthSelector';
 
 interface OwnProps {
   type: TransactionType;
@@ -76,6 +77,9 @@ export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
         ) : (
           <Heading>${total}</Heading>
         )}
+      </Center>
+      <Center margin="5">
+        <MonthSelector />
       </Center>
       <TableContainer>
         <Table variant="striped" colorScheme="blue">

@@ -61,6 +61,8 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
     transactions,
     category
   );
+  console.log(filteredTransactions);
+
   const total = getTransactionsTotal(filteredTransactions);
 
   const tableHeading = getTableHeading();
@@ -81,7 +83,7 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
           <Heading>${total}</Heading>
         )}
       </Center>
-      <Center>
+      <Center margin="5">
         <MonthSelector />
       </Center>
       <TableContainer>

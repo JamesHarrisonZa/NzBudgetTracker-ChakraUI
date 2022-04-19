@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 import { FC, useState } from 'react';
-import { Button, Stack } from '@chakra-ui/react';
+import { Button, Center, Stack } from '@chakra-ui/react';
 import {
   getFirstOfDateThisMonth,
   getCurrentDateThisMonth,
@@ -44,23 +44,21 @@ export const MonthSelector: FC = () => {
   };
 
   return (
-    <>
-      <Stack direction="row" spacing={4} align="center">
-        <Button
-          colorScheme="teal"
-          variant={!isThisMonthDateRange ? 'solid' : 'outline'}
-          onClick={handleLastMonthOnClick}
-        >
-          last month
-        </Button>
-        <Button
-          colorScheme="teal"
-          variant={isThisMonthDateRange ? 'solid' : 'outline'}
-          onClick={handleThisMonthOnClick}
-        >
-          this month
-        </Button>
-      </Stack>
-    </>
+    <Stack direction="row" spacing={4} align="center">
+      <Button
+        colorScheme="teal"
+        variant={!isThisMonthDateRange ? 'solid' : 'outline'}
+        onClick={handleLastMonthOnClick}
+      >
+        last month
+      </Button>
+      <Button
+        colorScheme="teal"
+        variant={isThisMonthDateRange ? 'solid' : 'outline'}
+        onClick={handleThisMonthOnClick}
+      >
+        this month
+      </Button>
+    </Stack>
   );
 };
