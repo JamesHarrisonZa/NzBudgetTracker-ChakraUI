@@ -32,7 +32,9 @@ export const AlcoholStat: FC<OwnProps> = (props: OwnProps) => {
         <StatNumber>${total}</StatNumber>
       )}
       <Link href={`/detail/alcohol`} passHref>
-        <Button colorScheme="blue">Details</Button>
+        <Button colorScheme="blue" minWidth="110px">
+          Details
+        </Button>
       </Link>
     </Stat>
   );

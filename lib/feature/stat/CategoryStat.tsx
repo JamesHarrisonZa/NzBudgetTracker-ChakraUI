@@ -34,7 +34,9 @@ export const CategoryStat: FC<OwnProps> = (props: OwnProps) => {
         <StatNumber>${total}</StatNumber>
       )}
       <Link href={`/category/${category}`} passHref>
-        <Button colorScheme="blue">Details</Button>
+        <Button colorScheme="blue" minWidth="110px">
+          Details
+        </Button>
       </Link>
     </Stat>
   );
