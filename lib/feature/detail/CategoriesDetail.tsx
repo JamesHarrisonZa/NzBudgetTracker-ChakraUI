@@ -16,13 +16,14 @@ import {
 import { Transactions } from '../../../pages/api/types/Transaction';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { TransactionCategory } from '../../../pages/api/types/TransactionCategory';
-import { getTransactionsByCategory } from '../../util/get-filtered-transactions';
+import { getTransactionsByCategories } from '../../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../../util/get-transactions-total';
 import FormattedDate from '../../ui/FormattedDate';
 import { MonthSelector } from '../MonthSelector';
 
 interface OwnProps {
-  category: TransactionCategory;
+  heading: string;
+  categories: TransactionCategory[];
 }
 
 const getTableHeading = () => (
@@ -50,14 +51,14 @@ const getTableRows = (filteredTransactions: Transactions) =>
     </Tr>
   ));
 
-export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
-  const { category } = props;
+export const CategoriesDetail: FC<OwnProps> = (props: OwnProps) => {
+  const { categories, heading } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategory(
+  const filteredTransactions = getTransactionsByCategories(
     transactions,
-    category
+    categories
   );
 
   const total = getTransactionsTotal(filteredTransactions);
@@ -68,7 +69,7 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
   return (
     <Flex direction="column" flexGrow={1}>
       <Center>
-        <Heading>{category}</Heading>
+        <Heading>{heading}</Heading>
       </Center>
       <Center>
         {isLoading ? (

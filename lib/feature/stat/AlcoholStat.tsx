@@ -31,7 +31,7 @@ export const AlcoholStat: FC<OwnProps> = (props: OwnProps) => {
       ) : (
         <StatNumber>${total}</StatNumber>
       )}
-      <Link href={`/alcohol/detail`} passHref>
+      <Link href={`/detail/alcohol`} passHref>
         <Button colorScheme="blue">Details</Button>
       </Link>
     </Stat>
