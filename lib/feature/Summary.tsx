@@ -11,6 +11,8 @@ import {
 } from '../util/get-dates';
 import { useAtom } from 'jotai';
 import { startDateAtom, endDateAtom } from '../data-access/atoms/date-range';
+import { TypeStat } from './TypeStat';
+import { TransactionType } from '../../pages/api/types/TransactionType';
 
 export const Summary: FC = () => {
   const todayDate = new Date();
@@ -54,7 +56,6 @@ export const Summary: FC = () => {
       <Text as="b">
         <FormattedDate date={todayDate} includeYear />
       </Text>
-      <Text as="b">Amounts spent</Text>
       <Stack direction="row" spacing={4} align="center">
         <Button
           colorScheme="teal"
@@ -71,8 +72,13 @@ export const Summary: FC = () => {
           this month
         </Button>
       </Stack>
+      <TypeStat label="Credit" type={TransactionType.Credit} />
+
+      <Text as="b">Amounts spent</Text>
 
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+        <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
+        <TypeStat label="Payments" type={TransactionType.Payment} />
         <CategoryStat label="Food" category={TransactionCategory.Food} />
         <CategoryStat label="Health" category={TransactionCategory.Health} />
         <CategoryStat

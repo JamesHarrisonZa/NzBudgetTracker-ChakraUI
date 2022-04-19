@@ -1,25 +1,22 @@
 import { FC } from 'react';
 import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
-import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
+import { TransactionType } from '../../pages/api/types/TransactionType';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
-import { getTransactionsByCategory } from '../util/get-filtered-transactions';
+import { getTransactionsByType } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
 import Link from 'next/link';
 
 interface OwnProps {
   label: string;
-  category: TransactionCategory;
+  type: TransactionType;
 }
 
-export const CategoryStat: FC<OwnProps> = (props: OwnProps) => {
-  const { label, category } = props;
+export const TypeStat: FC<OwnProps> = (props: OwnProps) => {
+  const { label, type: type } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategory(
-    transactions,
-    category
-  );
+  const filteredTransactions = getTransactionsByType(transactions, type);
   const total = getTransactionsTotal(filteredTransactions);
 
   return (
@@ -33,9 +30,9 @@ export const CategoryStat: FC<OwnProps> = (props: OwnProps) => {
       ) : (
         <StatNumber>${total}</StatNumber>
       )}
-      <Link href={`/category/${category}`} passHref>
+      {/* <Link href={`/category/${category}`} passHref>
         <Button colorScheme="blue">Details</Button>
-      </Link>
+      </Link> */}
     </Stat>
   );
 };

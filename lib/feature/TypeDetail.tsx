@@ -16,14 +16,14 @@ import {
   VisuallyHidden,
 } from '@chakra-ui/react';
 import { Transactions } from '../../pages/api/types/Transaction';
+import { TransactionType } from '../../pages/api/types/TransactionType';
 import { useAccountTransactions } from '../data-access/useAccountTransactions';
-import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
-import { getTransactionsByCategory } from '../util/get-filtered-transactions';
+import { getTransactionsByType } from '../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../util/get-transactions-total';
 import FormattedDate from '../ui/FormattedDate';
 
 interface OwnProps {
-  category: TransactionCategory;
+  type: TransactionType;
 }
 
 const getTableHeading = () => (
@@ -52,14 +52,11 @@ const getTableRows = (filteredTransactions: Transactions) =>
   ));
 
 export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
-  const { category } = props;
+  const { type } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategory(
-    transactions,
-    category
-  );
+  const filteredTransactions = getTransactionsByType(transactions, type);
   const total = getTransactionsTotal(filteredTransactions);
 
   const tableHeading = getTableHeading();
@@ -68,7 +65,7 @@ export const CategoryDetail: FC<OwnProps> = (props: OwnProps) => {
   return (
     <Flex direction="column" flexGrow={1}>
       <Center>
-        <Heading>{category}</Heading>
+        <Heading>{type}</Heading>
       </Center>
       <Center>
         {isLoading ? (
