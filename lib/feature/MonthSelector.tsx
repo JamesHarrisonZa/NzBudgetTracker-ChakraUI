@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
-import { FC, useState } from 'react';
-import { Button, Center, Stack } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Button, Stack } from '@chakra-ui/react';
 import {
   getFirstOfDateThisMonth,
   getCurrentDateThisMonth,
