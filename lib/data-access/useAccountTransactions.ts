@@ -2,7 +2,7 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import { useAtom } from 'jotai';
 import { useQuery, UseQueryOptions } from 'react-query';
-import { Transactions } from '../../pages/api/types/Transaction';
+import { Transactions } from '../../pages/api';
 import { endDateAtom, startDateAtom } from './atoms/date-range';
 
 export type AccountTransactionsHook = {

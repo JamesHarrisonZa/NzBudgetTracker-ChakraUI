@@ -1,15 +1,14 @@
 import { FC } from 'react';
 import { SimpleGrid, VStack, Text } from '@chakra-ui/react';
-import { TransactionType } from '../../pages/api/types/TransactionType';
-import { TransactionCategory } from '../../pages/api/types/TransactionCategory';
+import { DatePopover } from './DatePopover';
 import { TypeStat } from './stat/TypeStat';
-import { CategoryStat } from './stat/CategoryStat';
-import { UtilitiesStat } from './stat/UtilitiesStat';
-import { EntertainmentStat } from './stat/EntertainmentStat';
-import { GroceriesStat } from './stat/GroceriesStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';
-import { DatePopover } from './DatePopover';
+import { CategoryStat } from './stat/CategoryStat';
+import { UtilitiesStat } from './stat/UtilitiesStat';
+import { GroceriesStat } from './stat/GroceriesStat';
+import { EntertainmentStat } from './stat/EntertainmentStat';
+import { TransactionType, TransactionCategory } from '../../pages/api';
 
 export const Summary: FC = () => {
   return (

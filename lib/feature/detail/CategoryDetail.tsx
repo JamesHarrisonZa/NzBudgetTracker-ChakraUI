@@ -15,8 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { DatePopover } from '../DatePopover';
 import FormattedDate from '../../ui/FormattedDate';
-import { Transactions } from '../../../pages/api/types/Transaction';
-import { TransactionCategory } from '../../../pages/api/types/TransactionCategory';
+import { Transactions, TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategory } from '../../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../../util/get-transactions-total';

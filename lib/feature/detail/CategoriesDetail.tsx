@@ -13,13 +13,12 @@ import {
   Image,
   Spinner,
 } from '@chakra-ui/react';
-import { Transactions } from '../../../pages/api/types/Transaction';
+import { DatePopover } from '../DatePopover';
+import FormattedDate from '../../ui/FormattedDate';
+import { Transactions, TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { TransactionCategory } from '../../../pages/api/types/TransactionCategory';
 import { getTransactionsByCategories } from '../../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../../util/get-transactions-total';
-import FormattedDate from '../../ui/FormattedDate';
-import { DatePopover } from '../DatePopover';
 
 interface OwnProps {
   heading: string;

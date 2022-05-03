@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
-import { TransactionCategory } from '../../../pages/api/types/TransactionCategory';
+import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategory } from '../../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../../util/get-transactions-total';
