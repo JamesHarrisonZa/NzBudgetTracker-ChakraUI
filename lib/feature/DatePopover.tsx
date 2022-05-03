@@ -11,18 +11,18 @@ import { DateRangePicker } from './DateRangePicker';
 import { endDateAtom, startDateAtom } from '../data-access/atoms/date-range';
 
 export const DatePopover: FC = () => {
-  const [startDate, setStartDate] = useAtom(startDateAtom);
-  const [endDate, setEndDate] = useAtom(endDateAtom);
+  const [startDate] = useAtom(startDateAtom);
+  const [endDate] = useAtom(endDateAtom);
 
   const formattedStartDate = format(startDate, 'do LLLL yyyy');
   const formattedEndDate = format(endDate, 'do LLLL yyyy');
 
+  const buttonText = `${formattedStartDate} ➡ ${formattedEndDate}`;
+
   return (
     <Popover>
       <PopoverTrigger>
-        <Button>
-          {formattedStartDate} ➡ {formattedEndDate}
-        </Button>
+        <Button colorScheme="green">{buttonText}</Button>
       </PopoverTrigger>
       <PopoverContent>
         <DateRangePicker />
