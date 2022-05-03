@@ -1,5 +1,10 @@
-export * from './types/Transaction';
-export * from './types/TransactionCategory';
-export * from './types/TransactionType';
+export type {
+  Transactions,
+  Transaction,
+  Category,
+  CategoryType,
+} from './types/Transaction';
+export { TransactionCategory } from './types/TransactionCategory';
+export { TransactionType } from './types/TransactionType';
 
-export * from './akahu';
+export { default } from './akahu';
