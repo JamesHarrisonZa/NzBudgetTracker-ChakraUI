@@ -31,10 +31,13 @@ export const DateRangePicker = () => {
   const [startDate, setStartDate] = useAtom(startDateAtom);
   const [endDate, setEndDate] = useAtom(endDateAtom);
 
-  const [dates, setDates] = useState<CalendarValues>({});
+  const [dates, setDates] = useState<CalendarValues>({
+    start: startDate,
+    end: endDate,
+  });
   const [values, setValues] = useState({
-    start: '',
-    end: '',
+    start: format(startDate, 'MM/dd/yyyy'),
+    end: format(endDate, 'MM/dd/yyyy'),
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
