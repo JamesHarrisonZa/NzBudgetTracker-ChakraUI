@@ -3,6 +3,7 @@ import {
   AkahuClient,
   EnrichedTransaction,
   TransactionQueryParams,
+  Transaction as AkahuTransaction,
 } from 'akahu';
 import { Transaction, CategoryType } from './types/Transaction';
 
@@ -12,7 +13,6 @@ export default async function handler(
 ) {
   const appToken = process.env.AKAHU_APP_TOKEN as string;
   const userToken = process.env.AKAHU_USER_TOKEN as string;
-  const accountId = process.env.AKAHU_ACCOUNT_ID as string;
 
   if (!appToken || !userToken) {
     res.status(401);
@@ -21,19 +21,21 @@ export default async function handler(
   const akahu = new AkahuClient({ appToken });
 
   const { startDate, endDate } = req.query;
-  const queryParameters: TransactionQueryParams = {
+  const query: TransactionQueryParams = {
     start: startDate as string,
     end: endDate as string,
   };
 
-  const transactions = await akahu.accounts.listTransactions(
-    userToken,
-    accountId,
-    queryParameters
-  );
+  const transactions: AkahuTransaction[] = [];
 
-  //TODO handle pagination
-  const akahuTransactions = transactions.items as EnrichedTransaction[];
+  do {
+    const page = await akahu.transactions.list(userToken, query);
+
+    transactions.push(...page.items);
+    query.cursor = page.cursor.next;
+  } while (query.cursor !== null);
+
+  const akahuTransactions = transactions as EnrichedTransaction[];
   const mappedTransactions = getMappedTransactions(akahuTransactions);
 
   res.status(200).json(mappedTransactions);
