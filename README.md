@@ -13,8 +13,6 @@ I spend too much money 😶. I want to save more. This exists to help get closer
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 ## 🔧 TODO
