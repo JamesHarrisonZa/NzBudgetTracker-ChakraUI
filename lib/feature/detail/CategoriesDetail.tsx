@@ -19,7 +19,7 @@ import { TransactionCategory } from '../../../pages/api/types/TransactionCategor
 import { getTransactionsByCategories } from '../../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../../util/get-transactions-total';
 import FormattedDate from '../../ui/FormattedDate';
-import { MonthSelector } from '../MonthSelector';
+import { DatePopover } from '../DatePopover';
 
 interface OwnProps {
   heading: string;
@@ -83,7 +83,7 @@ export const CategoriesDetail: FC<OwnProps> = (props: OwnProps) => {
         )}
       </Center>
       <Center margin="5">
-        <MonthSelector />
+        <DatePopover />
       </Center>
       <TableContainer>
         <Table variant="striped" colorScheme="blue">

@@ -13,13 +13,13 @@ import {
   Image,
   Spinner,
 } from '@chakra-ui/react';
+import { DatePopover } from '../DatePopover';
+import FormattedDate from '../../ui/FormattedDate';
 import { Transactions } from '../../../pages/api/types/Transaction';
 import { TransactionType } from '../../../pages/api/types/TransactionType';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByType } from '../../util/get-filtered-transactions';
 import { getTransactionsTotal } from '../../util/get-transactions-total';
-import FormattedDate from '../../ui/FormattedDate';
-import { MonthSelector } from '../MonthSelector';
 
 interface OwnProps {
   type: TransactionType;
@@ -77,7 +77,7 @@ export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
         )}
       </Center>
       <Center margin="5">
-        <MonthSelector />
+        <DatePopover />
       </Center>
       <TableContainer>
         <Table variant="striped" colorScheme="blue">
