@@ -37,6 +37,8 @@ export const DateRangePicker: FC = () => {
       value={dates}
       onSelectDate={handleSelectDate}
       months={numberOfMonthsToDisplay}
+      weekStartsOn={1}
+      disableFutureDates
     >
       <CalendarControls>
         <CalendarPrevButton />
