@@ -1,17 +1,5 @@
 import { useAtom } from 'jotai';
-import { ChangeEvent, useRef, useState, useEffect, FC } from 'react';
-import { format, isAfter, isBefore, isValid } from 'date-fns';
-import {
-  Box,
-  Flex,
-  Input,
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  useDisclosure,
-  useOutsideClick,
-} from '@chakra-ui/react';
+import { useState, FC } from 'react';
 import {
   Calendar,
   CalendarControls,

@@ -9,7 +9,7 @@ import { EntertainmentStat } from './stat/EntertainmentStat';
 import { GroceriesStat } from './stat/GroceriesStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';
-import { DatePopover } from '../ui/DatePopover';
+import { DatePopover } from './DatePopover';
 
 export const Summary: FC = () => {
   return (
