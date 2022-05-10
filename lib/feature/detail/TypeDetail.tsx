@@ -17,9 +17,7 @@ import { DatePopover } from '../DatePopover';
 import FormattedDate from '../../ui/FormattedDate';
 import { Transactions, TransactionType } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { getTransactionsByType } from '../../util/get-filtered-transactions';
-import { getTransactionsTotal } from '../../util/get-transactions-total';
-
+import { getTransactionsByType, getTransactionsTotal } from '../../util';
 interface OwnProps {
   type: TransactionType;
 }
