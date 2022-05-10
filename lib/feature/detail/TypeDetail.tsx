@@ -17,7 +17,12 @@ import { DatePopover } from '../DatePopover';
 import FormattedDate from '../../ui/FormattedDate';
 import { Transactions, TransactionType } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { getTransactionsByType, getTransactionsTotal } from '../../util';
+import {
+  getTransactionTypeLabel,
+  getTransactionsByType,
+  getTransactionsTotal,
+} from '../../util';
+
 interface OwnProps {
   type: TransactionType;
 }
@@ -49,6 +54,7 @@ const getTableRows = (filteredTransactions: Transactions) =>
 
 export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
   const { type } = props;
+  const heading = getTransactionTypeLabel(type);
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
@@ -61,7 +67,7 @@ export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
   return (
     <Flex direction="column" flexGrow={1}>
       <Center>
-        <Heading>{type}</Heading>
+        <Heading>{heading}</Heading>
       </Center>
       <Center>
         {isLoading ? (
