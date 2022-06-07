@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import Link from 'next/link';
 import {
   Box,
   Flex,
@@ -15,8 +17,6 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { FC } from 'react';
-import Link from 'next/link';
 import FormattedDate from '../FormattedDate';
 
 const Navbar: FC = () => {

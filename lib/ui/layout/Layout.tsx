@@ -1,6 +1,6 @@
-import { Flex } from '@chakra-ui/react';
 import { FC } from 'react';
 import Head from 'next/head';
+import { Flex } from '@chakra-ui/react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 export const siteTitle = 'Budget Tracker';

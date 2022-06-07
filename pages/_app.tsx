@@ -1,7 +1,7 @@
+import type { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { ChakraProvider } from '@chakra-ui/react';
 import { CalendarDefaultTheme } from '@uselessdev/datepicker';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import type { AppProps } from 'next/app';
 
 const queryClient = new QueryClient();
 

@@ -1,6 +1,6 @@
-import { Box, Flex, Text, useColorModeValue, Stack } from '@chakra-ui/react';
 import { FC } from 'react';
 import Link from 'next/link';
+import { Box, Flex, Text, useColorModeValue, Stack } from '@chakra-ui/react';
 
 const Footer: FC = () => {
   const gradientStartColour = useColorModeValue('cyan.400', 'cyan.600');
