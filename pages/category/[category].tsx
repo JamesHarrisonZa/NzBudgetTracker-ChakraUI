@@ -5,7 +5,7 @@ import { CategoryDetail } from '../../lib/feature/detail/CategoryDetail';
 import { useRouter } from 'next/router';
 import { TransactionCategory } from '../api/types/TransactionCategory';
 
-const Detail: FC = () => {
+const Category: FC = () => {
   const router = useRouter();
   const { category } = router.query;
 
@@ -19,4 +19,4 @@ const Detail: FC = () => {
   );
 };
 
-export default Detail;
+export default Category;
