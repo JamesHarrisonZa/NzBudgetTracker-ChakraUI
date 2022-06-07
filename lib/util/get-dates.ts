@@ -1,4 +1,6 @@
-import { subDays } from 'date-fns';
+import { format, subDays } from 'date-fns';
+
+export const getFormattedDate = (date: Date) => format(date, 'yyyy-MM-dd');
 
 export const getCurrentDateThisMonth = (): Date => new Date();
 

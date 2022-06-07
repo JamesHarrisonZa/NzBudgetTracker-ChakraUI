@@ -11,16 +11,31 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Transaction[]>
 ) {
+  const { startDate, endDate } = req.query;
+  try {
+    const transactions = await fetchAkahuTransactions(
+      startDate  as string, endDate  as string
+    );
+    res.status(200).json(transactions);
+  }
+  catch(error){
+    if((error as Error).message.startsWith('Unauthorized')){
+      res.status(401);
+    }
+    res.status(500);
+  }
+}
+
+export const fetchAkahuTransactions = async (startDate: string, endDate: string) => {
   const appToken = process.env.AKAHU_APP_TOKEN as string;
   const userToken = process.env.AKAHU_USER_TOKEN as string;
 
   if (!appToken || !userToken) {
-    res.status(401);
+    throw Error('Unauthorized. Check ENV App and user tokens');
   }
 
   const akahu = new AkahuClient({ appToken });
 
-  const { startDate, endDate } = req.query;
   const query: TransactionQueryParams = {
     start: startDate as string,
     end: endDate as string,
@@ -38,7 +53,7 @@ export default async function handler(
   const akahuTransactions = transactions as EnrichedTransaction[];
   const mappedTransactions = getMappedTransactions(akahuTransactions);
 
-  res.status(200).json(mappedTransactions);
+  return mappedTransactions;
 }
 
 const getMappedTransactions = (
@@ -50,11 +65,11 @@ const getMappedTransactions = (
       amount: transaction.amount,
       type: transaction.type,
       description: transaction.description,
-      merchantName: transaction.merchant?.name,
+      merchantName: transaction.merchant?.name ?? null,
       categories: transaction.category?.components.map((c) => ({
         name: c.name,
         type: c.type as CategoryType,
-      })),
-      logoUrl: transaction.meta.logo,
+      })) ?? null,
+      logoUrl: transaction.meta?.logo ?? null,
     };
   });

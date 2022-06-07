@@ -42,7 +42,7 @@ const getTableRows = (filteredTransactions: Transactions) =>
   filteredTransactions.map((transaction, i) => (
     <Tr key={i}>
       <Td py="0">
-        <Image src={transaction.logoUrl} boxSize="50px" alt="" />
+        <Image src={transaction.logoUrl ?? ''} boxSize="50px" alt="" />
       </Td>
       <Td>{transaction.description}</Td>
       <Td isNumeric>{transaction.amount.toFixed(2)}</Td>

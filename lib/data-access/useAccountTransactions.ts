@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { format } from 'date-fns';
 import { useAtom } from 'jotai';
 import { useQuery, UseQueryOptions } from 'react-query';
 import { Transactions } from '../../pages/api';
+import { getFormattedDate } from '../util';
 import { endDateAtom, startDateAtom } from './atoms/date-range';
 
 export type AccountTransactionsHook = {
@@ -15,8 +15,6 @@ export type AccountTransactionsHook = {
   status: 'error' | 'idle' | 'loading' | 'success';
   isFetched: boolean;
 };
-
-const getFormattedDate = (date: Date) => format(date, 'yyyy-MM-dd');
 
 const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
   const formattedStartDate = getFormattedDate(startDate);

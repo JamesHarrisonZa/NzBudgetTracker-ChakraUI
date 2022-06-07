@@ -5,9 +5,9 @@ export interface Transaction {
   amount: number;
   type: string;
   description: string;
-  merchantName: string;
-  categories: Category[];
-  logoUrl?: string;
+  merchantName: string | null;
+  categories: Category[] | null;
+  logoUrl: string | null;
 }
 
 export interface Category {
