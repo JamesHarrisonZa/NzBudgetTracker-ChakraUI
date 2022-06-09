@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useAtom } from 'jotai';
-import { useQuery, UseQueryOptions } from 'react-query';
+import { QueryClient, useQuery, UseQueryOptions } from 'react-query';
 import { Transactions } from '../../pages/api';
-import { getFormattedDate } from '../util';
+import { fetchAkahuTransactions } from '../../pages/api/akahu';
+import { getCurrentDateThisMonth, getFirstOfDateThisMonth, getFormattedDate } from '../util';
 import { endDateAtom, startDateAtom } from './atoms/date-range';
 
 export type AccountTransactionsHook = {
@@ -16,10 +17,16 @@ export type AccountTransactionsHook = {
   isFetched: boolean;
 };
 
+export const prefetchAccountTransactions = async(queryClient: QueryClient) => {
+  const startDate = getFormattedDate(getFirstOfDateThisMonth());
+  const endDate = getFormattedDate(getCurrentDateThisMonth());
+  const fetchData = async() => await fetchAccountTransactions(startDate, endDate);
+
+  await queryClient.prefetchQuery(['transactions', startDate, endDate], fetchData);
+};
+
 const fetchAccountTransactions = async (startDate: string, endDate: string) => {
-  const url = `/api/akahu?startDate=${startDate}&endDate=${endDate}`;
-  const transactions = await axios.get<Transactions>(url);
-  return transactions.data;
+  return await fetchAkahuTransactions(startDate, endDate);
 };
 
 export const useAccountTransactions = (): AccountTransactionsHook => {
