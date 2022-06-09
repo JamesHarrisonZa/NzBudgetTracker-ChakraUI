@@ -20,13 +20,15 @@ export type AccountTransactionsHook = {
 export const prefetchAccountTransactions = async(queryClient: QueryClient) => {
   const startDate = getFormattedDate(getFirstOfDateThisMonth());
   const endDate = getFormattedDate(getCurrentDateThisMonth());
-  const fetchData = async() => await fetchAccountTransactions(startDate, endDate);
+  const fetchData = async() => await fetchAkahuTransactions(startDate, endDate);
 
   await queryClient.prefetchQuery(['transactions', startDate, endDate], fetchData);
 };
 
 const fetchAccountTransactions = async (startDate: string, endDate: string) => {
-  return await fetchAkahuTransactions(startDate, endDate);
+  const url = `/api/akahu?startDate=${startDate}&endDate=${endDate}`;
+  const transactions = await axios.get<Transactions>(url);
+  return transactions.data;
 };
 
 export const useAccountTransactions = (): AccountTransactionsHook => {
