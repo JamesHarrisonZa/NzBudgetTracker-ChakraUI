@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { dehydrate, QueryClient } from 'react-query';
 import Layout, { siteTitle } from '../lib/ui/layout/Layout';
 import { Summary } from '../lib/feature/Summary';
 import { getCurrentDateThisMonth, getFirstOfDateThisMonth, getFormattedDate } from '../lib/util';
@@ -8,12 +8,13 @@ import { fetchAkahuTransactions } from './api/akahu';
 
 const tenMinutes = 10 * 60 * 1000;
 
-export async function getStaticProps() {
-  const queryClient = new QueryClient()
-
+export const getStaticProps = async () => {
   const startDate = getFormattedDate(getFirstOfDateThisMonth());
   const endDate = getFormattedDate(getCurrentDateThisMonth());
-  await queryClient.prefetchQuery('transactions', async() => await fetchAkahuTransactions(startDate, endDate))
+  const fetchData = async() => await fetchAkahuTransactions(startDate, endDate);
+
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(['transactions', startDate, endDate], fetchData)
 
   return {
     props: {
