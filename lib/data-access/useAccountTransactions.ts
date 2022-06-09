@@ -16,11 +16,8 @@ export type AccountTransactionsHook = {
   isFetched: boolean;
 };
 
-const fetchAccountTransactions = async (startDate: Date, endDate: Date) => {
-  const formattedStartDate = getFormattedDate(startDate);
-  const formattedEndDate = getFormattedDate(endDate);
-
-  const url = `/api/akahu?startDate=${formattedStartDate}&endDate=${formattedEndDate}`;
+const fetchAccountTransactions = async (startDate: string, endDate: string) => {
+  const url = `/api/akahu?startDate=${startDate}&endDate=${endDate}`;
   const transactions = await axios.get<Transactions>(url);
   return transactions.data;
 };
@@ -33,6 +30,8 @@ export const useAccountTransactions = (): AccountTransactionsHook => {
 
   const [startDate] = useAtom(startDateAtom);
   const [endDate] = useAtom(endDateAtom);
+  const formattedStartDate = getFormattedDate(startDate);
+  const formattedEndDate = getFormattedDate(endDate);
 
   const {
     isLoading,
@@ -44,9 +43,9 @@ export const useAccountTransactions = (): AccountTransactionsHook => {
     status,
     isFetched,
   } = useQuery<Transactions>(
-    ['transactions', startDate, endDate],
+    ['transactions', formattedStartDate, formattedEndDate],
     ({ queryKey }) =>
-      fetchAccountTransactions(queryKey[1] as Date, queryKey[2] as Date),
+      fetchAccountTransactions(queryKey[1] as string, queryKey[2] as string),
     options
   );
 
