@@ -11,7 +11,7 @@ const NotFound: FC = () => {
         <title>{siteTitle}</title>
       </Head>
     <VStack w="full" h="full" p={10} spacing={10}>
-      <Heading> Page Not Found or not build yet... </Heading>
+      <Heading> Page Not Found or not built yet... </Heading>
       <iframe
         src='https://giphy.com/embed/WTL02R1L7YCGUEunFy'
         width='480'
