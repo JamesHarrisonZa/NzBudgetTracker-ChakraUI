@@ -5,12 +5,11 @@ import Layout, { siteTitle } from '../lib/ui/layout/Layout';
 import { Summary } from '../lib/feature/Summary';
 import { prefetchAccountTransactions } from '../lib/data-access/useAccountTransactions';
 
-const tenMinutes = 10 * 60 * 1000;
-
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
   await prefetchAccountTransactions(queryClient);
 
+  const tenMinutes = 10 * 60 * 1000;
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
