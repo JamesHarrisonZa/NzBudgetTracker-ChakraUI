@@ -9,7 +9,10 @@ interface OwnProps {}
 
 export const AlcoholStat: FC<OwnProps> = (props: OwnProps) => {
   const label = 'Alcohol';
-  const categories = [TransactionCategory.PackageStoresBeerWineAndLiquor];
+  const categories = [
+    TransactionCategory.BeerWineAndLiquor,
+    TransactionCategory.PackageStoresBeerWineAndLiquor
+  ];
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 

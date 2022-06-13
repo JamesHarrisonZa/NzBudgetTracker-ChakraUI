@@ -31,6 +31,7 @@ export enum TransactionCategory {
   AutomotiveServiceShopsNonDealer = 'Automotive Service Shops (Non-Dealer)',
   GroceryStoresAndSupermarkets = 'Grocery Stores and Supermarkets',
   PackageStoresBeerWineAndLiquor = 'Package Stores – Beer, Wine and Liquor',
+  BeerWineAndLiquor = 'Beer, Wine & Liquor', 
   EntertainmentNEC = 'Entertainment (NEC)',
   InsuranceSalesUnderwritingAndPremiums = 'Insurance Sales, Underwriting and Premiums',
   DoctorsAndPhysicians = 'Doctors and Physicians',

@@ -21,7 +21,10 @@ export const getStaticProps = async () => {
 
 const AlcoholDetail: FC = () => {
   const heading = 'Alcohol';
-  const categories = [TransactionCategory.PackageStoresBeerWineAndLiquor];
+  const categories = [
+    TransactionCategory.BeerWineAndLiquor,
+    TransactionCategory.PackageStoresBeerWineAndLiquor
+  ];
 
   return (
     <Layout>
