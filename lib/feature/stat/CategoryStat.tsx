@@ -1,9 +1,9 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
 import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategory, getTransactionsTotal } from '../../util';
-import Link from 'next/link';
 
 interface OwnProps {
   label: string;
