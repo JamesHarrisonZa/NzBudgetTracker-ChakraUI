@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import type { AppProps } from 'next/app';
+import { NextPage } from 'next';
+import type { AppProps as NextAppProps } from 'next/app';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ChakraProvider } from '@chakra-ui/react';
 import { CalendarDefaultTheme } from '@uselessdev/datepicker';
 
+type AppProps<P = any> = {
+  pageProps: P;
+  Component: NextPage;
+} & Omit<NextAppProps<P>, 'pageProps'>;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
