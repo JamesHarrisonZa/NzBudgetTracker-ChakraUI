@@ -10,6 +10,10 @@ interface TypeStatProps {
   type: TransactionType;
 }
 
+/**
+ * Income, Debit Orders and Payments
+ */
+
 export const TypeStat: FC<TypeStatProps> = ({ label, type }) => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 

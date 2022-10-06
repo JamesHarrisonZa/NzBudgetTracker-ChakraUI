@@ -10,6 +10,10 @@ interface CategoryStatProps {
   category: TransactionCategory;
 }
 
+/**
+ * Food, Health, Utilities, Transport, Lifestyle, Household, Professional Fees
+ */
+
 export const CategoryStat: FC<CategoryStatProps> = (
   props: CategoryStatProps
 ) => {

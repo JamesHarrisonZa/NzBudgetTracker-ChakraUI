@@ -23,6 +23,10 @@ interface OwnProps {
   type: TransactionType;
 }
 
+/**
+ * Income, Debit Orders and Payments
+ */
+
 export const TypeDetail: FC<OwnProps> = (props: OwnProps) => {
   const { type } = props;
   const heading = getTransactionTypeLabel(type);

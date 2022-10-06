@@ -19,6 +19,10 @@ interface CategoryDetailProps {
   category: TransactionCategory;
 }
 
+/**
+ * Food, Health, Utilities, Transport, Lifestyle, Household, Professional Fees
+ */
+
 export const CategoryDetail: FC<CategoryDetailProps> = ({ category }) => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 

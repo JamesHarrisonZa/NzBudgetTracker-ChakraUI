@@ -20,6 +20,11 @@ interface CategoriesDetailProps {
   categories: TransactionCategory[];
 }
 
+/**
+ * Grouped. Made up of multiple categories
+ * Utilities, Entertainment, Groceries, Alcohol, Fast food
+ */
+
 export const CategoriesDetail: FC<CategoriesDetailProps> = ({
   categories,
   heading,
