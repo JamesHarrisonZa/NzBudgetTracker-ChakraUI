@@ -10,7 +10,7 @@ import {
 import { DateRangePicker } from './DateRangePicker';
 import { endDateAtom, startDateAtom } from '../../data-access/atoms/date-range';
 
-export const DatePopover: FC = () => {
+export const DateRangePopover: FC = () => {
   const [startDate] = useAtom(startDateAtom);
   const [endDate] = useAtom(endDateAtom);
 

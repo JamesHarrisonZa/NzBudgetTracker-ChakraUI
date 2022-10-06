@@ -8,7 +8,7 @@ import {
   Center,
   Spinner,
 } from '@chakra-ui/react';
-import { DatePopover } from '../date/DatePopover';
+import { DateRangePopover } from '../date/DateRangePopover';
 import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
@@ -54,7 +54,7 @@ export const CategoriesDetail: FC<CategoriesDetailProps> = ({
         )}
       </Center>
       <Center margin="5">
-        <DatePopover />
+        <DateRangePopover />
       </Center>
       <TableContainer>
         <Table variant="striped" colorScheme="blue">

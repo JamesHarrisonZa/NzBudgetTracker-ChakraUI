@@ -8,7 +8,7 @@ import {
   Center,
   Spinner,
 } from '@chakra-ui/react';
-import { DatePopover } from '../date/DatePopover';
+import { DateRangePopover } from '../date/DateRangePopover';
 import { TransactionCategory } from '../../../pages/api';
 import { DetailTableRows } from '../../ui/detail/DetailTableRows';
 import { DetailTableHeading } from '../../ui/detail/DetailTableHeading';
@@ -49,7 +49,7 @@ export const CategoryDetail: FC<CategoryDetailProps> = ({ category }) => {
         )}
       </Center>
       <Center margin="5">
-        <DatePopover />
+        <DateRangePopover />
       </Center>
       <TableContainer>
         <Table variant="striped" colorScheme="blue">

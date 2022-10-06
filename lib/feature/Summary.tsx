@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { SimpleGrid, VStack, Text } from '@chakra-ui/react';
-import { DatePopover } from './date/DatePopover';
+import { DateRangePopover } from './date/DateRangePopover';
 import { TypeStat } from './stat/TypeStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';
@@ -13,7 +13,7 @@ import { TransactionType, TransactionCategory } from '../../pages/api';
 export const Summary: FC = () => {
   return (
     <VStack w="full" h="full" p={10} spacing={10}>
-      <DatePopover />
+      <DateRangePopover />
       <TypeStat label="Income" type={TransactionType.Credit} />
 
       <SimpleGrid columns={{ sm: 2, md: 2 }} spacing={10}>
