@@ -8,7 +8,7 @@ import {
   PopoverTrigger,
 } from '@chakra-ui/react';
 import { DateRangePicker } from './DateRangePicker';
-import { endDateAtom, startDateAtom } from '../data-access/atoms/date-range';
+import { endDateAtom, startDateAtom } from '../../data-access/atoms/date-range';
 
 export const DatePopover: FC = () => {
   const [startDate] = useAtom(startDateAtom);

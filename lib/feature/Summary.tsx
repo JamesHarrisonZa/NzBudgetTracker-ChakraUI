@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { SimpleGrid, VStack, Text } from '@chakra-ui/react';
-import { DatePopover } from './DatePopover';
+import { DatePopover } from './date/DatePopover';
 import { TypeStat } from './stat/TypeStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';

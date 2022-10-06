@@ -8,7 +8,7 @@ import {
   Center,
   Spinner,
 } from '@chakra-ui/react';
-import { DatePopover } from '../DatePopover';
+import { DatePopover } from '../date/DatePopover';
 import { TransactionType } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import {

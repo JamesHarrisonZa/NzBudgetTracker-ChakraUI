@@ -13,7 +13,7 @@ import {
   CalendarValues,
   CalendarWeek,
 } from '@uselessdev/datepicker';
-import { endDateAtom, startDateAtom } from '../data-access/atoms/date-range';
+import { endDateAtom, startDateAtom } from '../../data-access/atoms/date-range';
 
 export const DateRangePicker: FC = () => {
   const [startDate, setStartDate] = useAtom(startDateAtom);
