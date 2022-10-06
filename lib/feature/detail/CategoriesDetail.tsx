@@ -15,14 +15,15 @@ import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
 import { DetailTableHeading } from '../../ui/detail/DetailTableHeading';
 import { DetailTableRows } from '../../ui/detail/DetailTableRows';
 
-interface OwnProps {
+interface CategoriesDetailProps {
   heading: string;
   categories: TransactionCategory[];
 }
 
-export const CategoriesDetail: FC<OwnProps> = (props: OwnProps) => {
-  const { categories, heading } = props;
-
+export const CategoriesDetail: FC<CategoriesDetailProps> = ({
+  categories,
+  heading,
+}) => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 
   const filteredTransactions = getTransactionsByCategories(

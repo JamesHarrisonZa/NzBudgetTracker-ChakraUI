@@ -5,14 +5,12 @@ import { TransactionType } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByType, getTransactionsTotal } from '../../util';
 
-interface OwnProps {
+interface TypeStatProps {
   label: string;
   type: TransactionType;
 }
 
-export const TypeStat: FC<OwnProps> = (props: OwnProps) => {
-  const { label, type: type } = props;
-
+export const TypeStat: FC<TypeStatProps> = ({ label, type }) => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 
   const filteredTransactions = getTransactionsByType(transactions, type);

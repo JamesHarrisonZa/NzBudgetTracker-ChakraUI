@@ -5,12 +5,14 @@ import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategory, getTransactionsTotal } from '../../util';
 
-interface OwnProps {
+interface CategoryStatProps {
   label: string;
   category: TransactionCategory;
 }
 
-export const CategoryStat: FC<OwnProps> = (props: OwnProps) => {
+export const CategoryStat: FC<CategoryStatProps> = (
+  props: CategoryStatProps
+) => {
   const { label, category } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();

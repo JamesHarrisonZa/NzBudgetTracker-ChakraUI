@@ -5,9 +5,7 @@ import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
 
-interface OwnProps {}
-
-export const UtilitiesStat: FC<OwnProps> = (props: OwnProps) => {
+export const UtilitiesStat: FC = () => {
   const label = 'Utilities';
   const categories = [
     TransactionCategory.ElectricityGasAndWater,

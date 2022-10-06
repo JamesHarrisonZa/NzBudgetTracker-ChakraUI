@@ -5,9 +5,7 @@ import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
 
-interface OwnProps {}
-
-export const EntertainmentStat: FC<OwnProps> = (props: OwnProps) => {
+export const EntertainmentStat: FC = () => {
   const label = 'Entertainment';
   const categories = [
     TransactionCategory.CableServices,

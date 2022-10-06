@@ -5,13 +5,11 @@ import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
 
-interface OwnProps {}
-
-export const AlcoholStat: FC<OwnProps> = (props: OwnProps) => {
+export const AlcoholStat: FC = () => {
   const label = 'Alcohol';
   const categories = [
     TransactionCategory.BeerWineAndLiquor,
-    TransactionCategory.PackageStoresBeerWineAndLiquor
+    TransactionCategory.PackageStoresBeerWineAndLiquor,
   ];
 
   const { transactions, isLoading, isError } = useAccountTransactions();

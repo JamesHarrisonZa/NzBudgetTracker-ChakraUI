@@ -1,12 +1,20 @@
-import { Thead, Tr, Th } from '@chakra-ui/react';
 import { FC } from 'react';
+import { Thead, Tr, Th } from '@chakra-ui/react';
 
-export const DetailTableHeading: FC = () => {
+type Variant = 'merchant' | 'description';
+
+interface DetailTableHeadingProps {
+  variant?: Variant;
+}
+
+export const DetailTableHeading: FC<DetailTableHeadingProps> = ({
+  variant = 'merchant',
+}) => {
   return (
     <Thead>
       <Tr>
-        <Th /> {/* Logo */}
-        <Th>Merchant</Th>
+        <Th /> {/* Logo image */}
+        <Th>{variant}</Th>
         <Th>Amount</Th>
         <Th>Date</Th>
       </Tr>

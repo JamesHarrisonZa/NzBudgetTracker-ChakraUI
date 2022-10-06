@@ -5,9 +5,7 @@ import { TransactionCategory } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
 
-interface OwnProps {}
-
-export const FastFoodStat: FC<OwnProps> = (props: OwnProps) => {
+export const FastFoodStat: FC = () => {
   const label = 'Fast food';
   const categories = [
     TransactionCategory.FastFoodRestaurants,
