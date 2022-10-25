@@ -22,3 +22,11 @@ export const getFirstOfDateLastMonth = (): Date => {
 
 export const getLastOfDateLastMonth = (): Date =>
   subDays(getFirstOfDateThisMonth(), 1);
+
+export const getThisMonthsPayDay = (payDay: number): Date => {
+  return new Date(
+    getCurrentDateThisMonth().getFullYear(),
+    getCurrentDateThisMonth().getMonth(),
+    payDay
+  );
+};
