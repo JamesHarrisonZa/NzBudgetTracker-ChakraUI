@@ -6,7 +6,7 @@ export interface Transaction {
   type: string;
   description: string;
   merchantName: string | null;
-  categories: Category[] | null;
+  categories: Category | null;
   logoUrl: string | null;
 }
 

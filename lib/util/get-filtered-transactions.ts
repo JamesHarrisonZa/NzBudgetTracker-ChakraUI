@@ -8,8 +8,8 @@ export const getTransactionsByCategory = (
   transactions: Transactions,
   category: TransactionCategory
 ) =>
-  transactions.filter((transaction) =>
-    transaction.categories?.map((category) => category.name).includes(category)
+  transactions.filter(
+    (transaction) => transaction.categories?.name === category
   );
 
 export const getTransactionsByCategories = (
@@ -17,9 +17,9 @@ export const getTransactionsByCategories = (
   categories: TransactionCategory[]
 ) =>
   transactions.filter((transaction) =>
-    transaction.categories
-      ?.map((category) => category.name as TransactionCategory)
-      .some((transactionCategory) => categories.includes(transactionCategory))
+    categories.includes(
+      (transaction.categories?.name as TransactionCategory) ?? ''
+    )
   );
 
 export const getTransactionsByType = (

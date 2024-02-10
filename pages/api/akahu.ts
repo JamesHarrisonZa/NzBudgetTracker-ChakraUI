@@ -66,10 +66,13 @@ const getMappedTransactions = (
       type: transaction.type,
       description: transaction.description,
       merchantName: transaction.merchant?.name ?? null,
-      categories: transaction.category?.components.map((c) => ({
-        name: c.name,
-        type: c.type as CategoryType,
-      })) ?? null,
+      categories: {
+        name:
+          transaction.category?.groups['personal_finance']?.name ?? 'UNKNOWN',
+        type:
+          (transaction.category?.groups['personal_finance']
+            ?.name as CategoryType) ?? 'UNKNOWN',
+      },
       logoUrl: transaction.meta?.logo ?? null,
     };
   });
