@@ -4,8 +4,9 @@ const typeLabelMap = {
   [`${TransactionType.Payment}`]: 'Payments',
   [`${TransactionType.StandingOrder}`]: 'Debit Orders',
   [`${TransactionType.Debit}`]: 'Debit',
-  [`${TransactionType.Credit}`]: 'Income',
-  [`${TransactionType.EFTPOS}`]: 'EFT POS',
+  [`${TransactionType.Credit}`]: 'Income / Credit',
+  [`${TransactionType.Transfer}`]: 'Transfer',
+  [`${TransactionType.Fee}`]: 'Fee',
 };
 
 export const getTransactionTypeLabel = (type: TransactionType) =>

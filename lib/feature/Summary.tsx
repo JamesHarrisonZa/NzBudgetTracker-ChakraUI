@@ -14,10 +14,10 @@ export const Summary: FC = () => {
   return (
     <VStack w="full" h="full" p={10} spacing={10}>
       <DateRangePopover />
-      <TypeStat label="Income" type={TransactionType.Credit} />
+      <TypeStat label="Income / Credit" type={TransactionType.Credit} />
 
       <SimpleGrid columns={{ sm: 2, md: 2 }} spacing={10}>
-        <TypeStat label="Debit Orders" type={TransactionType.StandingOrder} />
+        <TypeStat label="Debits" type={TransactionType.Debit} />
         <TypeStat label="Payments" type={TransactionType.Payment} />
       </SimpleGrid>
 
