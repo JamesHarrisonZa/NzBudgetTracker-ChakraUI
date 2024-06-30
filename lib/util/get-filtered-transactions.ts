@@ -10,30 +10,37 @@ export const getTransactionsByCategoryGroup = (
   categoryGroup: TransactionCategoryGroupName
 ) =>
   transactions.filter(
-    (transaction) => transaction.category?.group === categoryGroup
+    (transaction) =>
+      normalize(transaction.category?.group ?? '') === normalize(categoryGroup)
   );
 
 export const getTransactionsByCategoryGroups = (
   transactions: Transactions,
   categoryGroups: TransactionCategoryGroupName[]
 ) =>
-  transactions.filter((transaction) =>
-    categoryGroups.includes(
-      (transaction.category?.group as TransactionCategoryGroupName) ?? ''
-    )
-  );
+  transactions.filter((transaction) => {
+    const normalizedCategoryGroups = categoryGroups.map(normalize);
+
+    return normalizedCategoryGroups.includes(
+      normalize(transaction.category?.group ?? '')
+    );
+  });
 
 export const getTransactionsByCategoryNames = (
   transactions: Transactions,
-  categoryGroups: TransactionCategoryName[]
+  categoryNames: TransactionCategoryName[]
 ) =>
-  transactions.filter((transaction) =>
-    categoryGroups.includes(
-      (transaction.category?.name as TransactionCategoryName) ?? ''
-    )
-  );
+  transactions.filter((transaction) => {
+    const normalizedCategoryNames = categoryNames.map(normalize);
+
+    return normalizedCategoryNames.includes(
+      normalize(transaction.category?.name ?? '')
+    );
+  });
 
 export const getTransactionsByType = (
   transactions: Transactions,
   type: TransactionType
-) => transactions.filter((transaction) => transaction.type === type);
+) => transactions.filter((transaction) => normalize(transaction.type) === normalize(type));
+
+const normalize = (str: string) => str.replace(/ /g, '').toLowerCase(); //Remove spaces and convert to lowercase
