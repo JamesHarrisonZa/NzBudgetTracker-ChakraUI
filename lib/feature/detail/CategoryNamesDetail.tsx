@@ -9,26 +9,34 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 import { DateRangePopover } from '../date/DateRangePopover';
-import { TransactionCategory } from '../../../pages/api';
+import { TransactionCategoryName } from '../../../pages/api';
 import { DetailTableRows } from '../../ui/detail/DetailTableRows';
 import { DetailTableHeading } from '../../ui/detail/DetailTableHeading';
-import { getTransactionsByCategory, getTransactionsTotal } from '../../util';
+import {
+  getTransactionsByCategoryGroup,
+  getTransactionsByCategoryNames,
+  getTransactionsTotal,
+} from '../../util';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 
 interface CategoryDetailProps {
-  category: TransactionCategory;
+  heading: string;
+  categoryNames: TransactionCategoryName[];
 }
 
 /**
  * Food, Health, Utilities, Transport, Lifestyle, Household, Professional Fees
  */
 
-export const CategoryDetail: FC<CategoryDetailProps> = ({ category }) => {
+export const CategoryNamesDetail: FC<CategoryDetailProps> = ({
+  heading,
+  categoryNames,
+}) => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategory(
+  const filteredTransactions = getTransactionsByCategoryNames(
     transactions,
-    category
+    categoryNames
   );
 
   const total = getTransactionsTotal(filteredTransactions);
@@ -36,7 +44,7 @@ export const CategoryDetail: FC<CategoryDetailProps> = ({ category }) => {
   return (
     <Flex direction="column" flexGrow={1}>
       <Center>
-        <Heading>{category}</Heading>
+        <Heading>{heading}</Heading>
       </Center>
       <Center>
         {isLoading ? (

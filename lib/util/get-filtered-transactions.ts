@@ -1,24 +1,35 @@
 import {
   Transactions,
-  TransactionCategory,
+  TransactionCategoryGroupName,
   TransactionType,
+  TransactionCategoryName,
 } from '../../pages/api';
 
-export const getTransactionsByCategory = (
+export const getTransactionsByCategoryGroup = (
   transactions: Transactions,
-  category: TransactionCategory
+  categoryGroup: TransactionCategoryGroupName
 ) =>
   transactions.filter(
-    (transaction) => transaction.categories?.name === category
+    (transaction) => transaction.category?.group === categoryGroup
   );
 
-export const getTransactionsByCategories = (
+export const getTransactionsByCategoryGroups = (
   transactions: Transactions,
-  categories: TransactionCategory[]
+  categoryGroups: TransactionCategoryGroupName[]
 ) =>
   transactions.filter((transaction) =>
-    categories.includes(
-      (transaction.categories?.name as TransactionCategory) ?? ''
+    categoryGroups.includes(
+      (transaction.category?.group as TransactionCategoryGroupName) ?? ''
+    )
+  );
+
+export const getTransactionsByCategoryNames = (
+  transactions: Transactions,
+  categoryGroups: TransactionCategoryName[]
+) =>
+  transactions.filter((transaction) =>
+    categoryGroups.includes(
+      (transaction.category?.name as TransactionCategoryName) ?? ''
     )
   );
 

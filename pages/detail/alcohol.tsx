@@ -2,8 +2,8 @@ import { FC } from 'react';
 import Head from 'next/head';
 import { dehydrate, QueryClient } from 'react-query';
 import Layout, { siteTitle } from '../../lib/ui/layout/Layout';
-import { TransactionCategory } from '../api/types/TransactionCategory';
-import { CategoriesDetail } from '../../lib/feature/detail/CategoriesDetail';
+import { CategoryNamesDetail } from '../../lib/feature/detail/CategoryNamesDetail';
+import { categoryNames } from '../../lib/feature/stat/AlcoholStat';
 import { prefetchAccountTransactions } from '../../lib/data-access/useAccountTransactions';
 
 export const getStaticProps = async () => {
@@ -16,22 +16,18 @@ export const getStaticProps = async () => {
       dehydratedState: dehydrate(queryClient),
     },
     revalidate: tenMinutes,
-  }
+  };
 };
 
 const AlcoholDetail: FC = () => {
   const heading = 'Alcohol';
-  const categories = [
-    TransactionCategory.BeerWineAndLiquor,
-    TransactionCategory.PackageStoresBeerWineAndLiquor
-  ];
 
   return (
     <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <CategoriesDetail categories={categories} heading={heading} />
+      <CategoryNamesDetail categoryNames={categoryNames} heading={heading} />
     </Layout>
   );
 };

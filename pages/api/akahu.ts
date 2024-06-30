@@ -5,7 +5,11 @@ import {
   TransactionQueryParams,
   Transaction as AkahuTransaction,
 } from 'akahu';
-import { Transaction, CategoryType } from './types/Transaction';
+import { Transaction } from './types/Transaction';
+import {
+  TransactionCategoryGroupName,
+  TransactionCategoryName,
+} from './types/TransactionCategory';
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,12 +18,12 @@ export default async function handler(
   const { startDate, endDate } = req.query;
   try {
     const transactions = await fetchAkahuTransactions(
-      startDate  as string, endDate  as string
+      startDate as string,
+      endDate as string
     );
     res.status(200).json(transactions);
-  }
-  catch(error){
-    if((error as Error).message.startsWith('Unauthorized')){
+  } catch (error) {
+    if ((error as Error).message.startsWith('Unauthorized')) {
       res.status(401);
     }
     res.status(500);
@@ -54,7 +58,7 @@ export const fetchAkahuTransactions = async (startDate: string, endDate: string)
   const mappedTransactions = getMappedTransactions(akahuTransactions);
 
   return mappedTransactions;
-}
+};
 
 const getMappedTransactions = (
   transactions: EnrichedTransaction[]
@@ -66,12 +70,12 @@ const getMappedTransactions = (
       type: transaction.type,
       description: transaction.description,
       merchantName: transaction.merchant?.name ?? null,
-      categories: {
+      category: {
         name:
-          transaction.category?.groups['personal_finance']?.name ?? 'UNKNOWN',
-        type:
+          (transaction.category?.name as TransactionCategoryName) ?? 'UNKNOWN',
+        group:
           (transaction.category?.groups['personal_finance']
-            ?.name as CategoryType) ?? 'UNKNOWN',
+            ?.name as TransactionCategoryGroupName) ?? 'UNKNOWN',
       },
       logoUrl: transaction.meta?.logo ?? null,
     };

@@ -1,23 +1,30 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
-import { TransactionCategory } from '../../../pages/api';
+import { TransactionCategoryName } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
+import {
+  getTransactionsByCategoryNames,
+  getTransactionsTotal,
+} from '../../util';
+
+export const categoryNames = [
+  TransactionCategoryName.Lifestyle_Cinemas,
+  TransactionCategoryName.Lifestyle_Entertainment,
+  TransactionCategoryName.Lifestyle_EventsAndTickets,
+  TransactionCategoryName.Lifestyle_DigitalGamingProductsAndServices,
+  TransactionCategoryName.Lifestyle_HobbyToyAndPhysicalGameStores,
+  TransactionCategoryName.Lifestyle_MediaAndEntertainmentStreamingServices,
+];
 
 export const EntertainmentStat: FC = () => {
   const label = 'Entertainment';
-  const categories = [
-    TransactionCategory.CableServices,
-    TransactionCategory.EntertainmentNEC,
-    TransactionCategory.RadioAndTelevisionServices,
-  ];
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategories(
+  const filteredTransactions = getTransactionsByCategoryNames(
     transactions,
-    categories
+    categoryNames
   );
   const total = getTransactionsTotal(filteredTransactions);
 

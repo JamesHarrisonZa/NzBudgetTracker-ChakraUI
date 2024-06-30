@@ -1,29 +1,32 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
-import { TransactionCategory } from '../../../pages/api';
+import { TransactionCategoryGroupName } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { getTransactionsByCategory, getTransactionsTotal } from '../../util';
+import {
+  getTransactionsByCategoryGroup,
+  getTransactionsTotal,
+} from '../../util';
 
-interface CategoryStatProps {
+interface CategoryGroupStatProps {
   label: string;
-  category: TransactionCategory;
+  categoryGroupName: TransactionCategoryGroupName;
 }
 
 /**
- * Food, Health, Utilities, Transport, Lifestyle, Household, Professional Fees
+ * Appearance, Education, Food, Health, Utilities, Transport, Lifestyle, Household, Professional Fees
  */
 
-export const CategoryStat: FC<CategoryStatProps> = (
-  props: CategoryStatProps
+export const CategoryGroupStat: FC<CategoryGroupStatProps> = (
+  props: CategoryGroupStatProps
 ) => {
-  const { label, category } = props;
+  const { label, categoryGroupName } = props;
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategory(
+  const filteredTransactions = getTransactionsByCategoryGroup(
     transactions,
-    category
+    categoryGroupName
   );
   const total = getTransactionsTotal(filteredTransactions);
 
@@ -38,7 +41,7 @@ export const CategoryStat: FC<CategoryStatProps> = (
       ) : (
         <StatNumber>${total}</StatNumber>
       )}
-      <Link href={`/category/${category}`} passHref>
+      <Link href={`/category/${categoryGroupName}`} passHref>
         <Button colorScheme="blue" minWidth="110px">
           Details
         </Button>

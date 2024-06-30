@@ -9,31 +9,31 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 import { DateRangePopover } from '../date/DateRangePopover';
-import { TransactionCategory } from '../../../pages/api';
-import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
-import { DetailTableHeading } from '../../ui/detail/DetailTableHeading';
+import { TransactionCategoryGroupName } from '../../../pages/api';
 import { DetailTableRows } from '../../ui/detail/DetailTableRows';
+import { DetailTableHeading } from '../../ui/detail/DetailTableHeading';
+import {
+  getTransactionsByCategoryGroup,
+  getTransactionsTotal,
+} from '../../util';
+import { useAccountTransactions } from '../../data-access/useAccountTransactions';
 
-interface CategoriesDetailProps {
-  heading: string;
-  categories: TransactionCategory[];
+interface CategoryDetailProps {
+  categoryGroupName: TransactionCategoryGroupName;
 }
 
 /**
- * Grouped. Made up of multiple categories
- * Utilities, Entertainment, Groceries, Alcohol, Fast food
+ * Food, Health, Utilities, Transport, Lifestyle, Household, Professional Fees
  */
 
-export const CategoriesDetail: FC<CategoriesDetailProps> = ({
-  categories,
-  heading,
+export const CategoryGroupDetail: FC<CategoryDetailProps> = ({
+  categoryGroupName: category,
 }) => {
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategories(
+  const filteredTransactions = getTransactionsByCategoryGroup(
     transactions,
-    categories
+    category
   );
 
   const total = getTransactionsTotal(filteredTransactions);
@@ -41,7 +41,7 @@ export const CategoriesDetail: FC<CategoriesDetailProps> = ({
   return (
     <Flex direction="column" flexGrow={1}>
       <Center>
-        <Heading>{heading}</Heading>
+        <Heading>{category}</Heading>
       </Center>
       <Center>
         {isLoading ? (

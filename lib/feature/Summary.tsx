@@ -4,11 +4,11 @@ import { DateRangePopover } from './date/DateRangePopover';
 import { TypeStat } from './stat/TypeStat';
 import { AlcoholStat } from './stat/AlcoholStat';
 import { FastFoodStat } from './stat/FastFoodStat';
-import { CategoryStat } from './stat/CategoryStat';
+import { CategoryGroupStat } from './stat/CategoryGroupStat';
 import { UtilitiesStat } from './stat/UtilitiesStat';
 import { GroceriesStat } from './stat/GroceriesStat';
 import { EntertainmentStat } from './stat/EntertainmentStat';
-import { TransactionType, TransactionCategory } from '../../pages/api';
+import { TransactionType, TransactionCategoryGroupName } from '../../pages/api';
 
 export const Summary: FC = () => {
   return (
@@ -22,7 +22,7 @@ export const Summary: FC = () => {
       </SimpleGrid>
 
       <Text as="b" margin="0">
-        Grouped categories
+        Named categories
       </Text>
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 5 }} spacing={10}>
         <UtilitiesStat />
@@ -32,29 +32,35 @@ export const Summary: FC = () => {
         <FastFoodStat />
       </SimpleGrid>
 
-      <Text as="b">High level categories</Text>
+      <Text as="b">Grouped categories</Text>
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 5, xl: 7 }} spacing={10}>
-        <CategoryStat label="Food" category={TransactionCategory.Food} />
-        <CategoryStat label="Health" category={TransactionCategory.Health} />
-        <CategoryStat
+        <CategoryGroupStat
+          label="Food"
+          categoryGroupName={TransactionCategoryGroupName.Food}
+        />
+        <CategoryGroupStat
+          label="Health"
+          categoryGroupName={TransactionCategoryGroupName.Health}
+        />
+        <CategoryGroupStat
           label="Utilities"
-          category={TransactionCategory.Utilities}
+          categoryGroupName={TransactionCategoryGroupName.Utilities}
         />
-        <CategoryStat
+        <CategoryGroupStat
           label="Transport"
-          category={TransactionCategory.Transport}
+          categoryGroupName={TransactionCategoryGroupName.Transport}
         />
-        <CategoryStat
+        <CategoryGroupStat
           label="Lifestyle"
-          category={TransactionCategory.Lifestyle}
+          categoryGroupName={TransactionCategoryGroupName.Lifestyle}
         />
-        <CategoryStat
+        <CategoryGroupStat
           label="Household"
-          category={TransactionCategory.Household}
+          categoryGroupName={TransactionCategoryGroupName.Household}
         />
-        <CategoryStat
+        <CategoryGroupStat
           label="Professional Fees"
-          category={TransactionCategory.ProfessionalFees}
+          categoryGroupName={TransactionCategoryGroupName.ProfessionalServices}
         />
       </SimpleGrid>
     </VStack>

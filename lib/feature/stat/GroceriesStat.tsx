@@ -1,22 +1,29 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { StatLabel, Stat, StatNumber, Button, Spinner } from '@chakra-ui/react';
-import { TransactionCategory } from '../../../pages/api';
+import { TransactionCategoryName } from '../../../pages/api';
 import { useAccountTransactions } from '../../data-access/useAccountTransactions';
-import { getTransactionsByCategories, getTransactionsTotal } from '../../util';
+import {
+  getTransactionsByCategoryNames,
+  getTransactionsTotal,
+} from '../../util';
+
+export const categoryNames = [
+  TransactionCategoryName.Food_Bakeries,
+  TransactionCategoryName.Food_FishAndSeafoodSupplies,
+  TransactionCategoryName.Food_MeatSupplies,
+  TransactionCategoryName.Food_SpecialtyFoodStores,
+  TransactionCategoryName.Food_SupermarketsAndGroceryStores,
+];
 
 export const GroceriesStat: FC = () => {
   const label = 'Groceries';
-  const categories = [
-    TransactionCategory.GroceryStoresAndSupermarkets,
-    TransactionCategory.SupermarketAndGroceryStores,
-  ];
 
   const { transactions, isLoading, isError } = useAccountTransactions();
 
-  const filteredTransactions = getTransactionsByCategories(
+  const filteredTransactions = getTransactionsByCategoryNames(
     transactions,
-    categories
+    categoryNames
   );
   const total = getTransactionsTotal(filteredTransactions);
 
