@@ -20,7 +20,11 @@ const getTableRows = (transactions: Transactions, variant: Variant) =>
     return (
       <Tr key={i}>
         <Td py="0">
-          <Image src={transaction.logoUrl ?? ''} boxSize="50px" alt="" />
+          <Image
+            src={transaction.logoUrl ?? '/images/missing-image-icon.png'}
+            boxSize="50px"
+            alt=""
+          />
         </Td>
         <Td>{merchantNameOrDescription}</Td>
         <Td isNumeric>{transaction.amount.toFixed(2)}</Td>

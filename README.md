@@ -34,7 +34,6 @@ npm run dev
 
 ## 🔧 TODO and maybe coming soon™
 
-- Find good default images for credits/debits.
 - Add pending transactions from Akahu.
 - Update stats to compare last month to this month.
 - Set budget goals for categories.
